@@ -72,7 +72,7 @@
                             <tbody>
                             {{ range $week := $data }}
                                 <tr>
-                                    {{ if or $showAll (ne $week.Stock "") }}
+                                    {{ if or $showAll (ne $week.Stock "None") }}
                                     <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
                                     <td>{{ $week.Stock }}</td>
                                     {{ end }}

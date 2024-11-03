@@ -34,7 +34,31 @@ const (
 	SpringSummerProgram Program = "springsummer"
 )
 
+const (
+	Catfish     Fish = "Catfish"
+	Trout       Fish = "Trout"
+	UnknownFish Fish = "Unknown"
+	NoneFish    Fish = "None"
+)
+
 var azTime = time.FixedZone("AZ", -7)
+
+// Fish is the type of fish that is stocked
+type Fish string
+
+// ParseFish parses a string to a Fish type
+func ParseFish(f string) Fish {
+	switch strings.ToLower(f) {
+	case "x", "t":
+		return Trout
+	case "c":
+		return Catfish
+	case "":
+		return NoneFish
+	default:
+		return UnknownFish
+	}
+}
 
 // Program is an enum type for AZ GFD stocking programs: cfp (community fishing program), winter,
 // spring, and summer (spring/summer are the same)
@@ -59,7 +83,7 @@ type Week struct {
 	Month time.Month
 	Day   int
 	Year  int
-	Stock string
+	Stock Fish
 }
 
 // Time creates a time.Time from the Year, Month, and Date of stocking
@@ -87,7 +111,7 @@ func (s Calendar) String() string {
 func (s Calendar) Format(hideEmpty bool) string {
 	var sb strings.Builder
 	for _, data := range s {
-		if hideEmpty && data.Stock == "" {
+		if hideEmpty && data.Stock == NoneFish {
 			continue
 		}
 		sb.WriteString(data.String())
@@ -132,7 +156,7 @@ func (s Calendar) Next() Week {
 	now := time.Now().In(azTime)
 
 	for _, data := range s {
-		if data.Stock == "" {
+		if data.Stock == NoneFish {
 			continue
 		}
 		if data.Time().After(now) {
@@ -287,7 +311,7 @@ func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, 
 		}
 
 		dateItem := stockingCalendar[i-skippedRows]
-		dateItem.Stock = cellAsString(stock)
+		dateItem.Stock = ParseFish(cellAsString(stock))
 
 		result = append(result, dateItem)
 	}
