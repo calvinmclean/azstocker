@@ -1,0 +1,39 @@
+{{ define "homepage" }}
+{{ template "header" . }}
+
+<div class="uk-margin-top">
+    <h1 class="uk-heading-medium uk-text-center">Stocker</h1>
+    <h4 class="uk-text-center">Arizona Fish Stocking Schedule</h4>
+    <div class="uk-card uk-card-default" style="margin: 5%;">
+        <div class="uk-card-body">
+            <div class="uk-grid uk-flex-center" uk-grid>
+                <form action="/cfp" method="get">
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-button-large">
+                        Community Fishing Program Schedule
+                        </button>
+                    </div>
+                </form>
+
+                <form action="/winter" method="get">
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-button-large">
+                        Winter Schedule
+                        </button>
+                    </div>
+                </form>
+
+                <form action="/springsummer" method="get">
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-button-large">
+                        Spring & Summer Schedule
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ template "footer" . }}
+{{ end }}

@@ -18,7 +18,7 @@ import (
 
 const (
 	watersQueryParam = "waters"
-	templateFilename = "templates/calendar.html.tmpl"
+	templateFilename = "templates/*"
 )
 
 //go:embed templates/*
@@ -28,6 +28,7 @@ func RunServer(addr string, srv *sheets.Service) error {
 	mux := http.NewServeMux()
 
 	s := &server{srv}
+	mux.HandleFunc("/", s.homepage)
 	mux.HandleFunc("/{program}", s.getProgramSchedule)
 
 	return http.ListenAndServe(addr, mux)
@@ -35,6 +36,20 @@ func RunServer(addr string, srv *sheets.Service) error {
 
 type server struct {
 	srv *sheets.Service
+}
+
+func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := loadTemplates()
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "failed to parse template", "err", err.Error())
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "homepage", nil)
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
+		return
+	}
 }
 
 func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
@@ -64,13 +79,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	slices.Sort(allWaterNames)
 
-	var tmpl *template.Template
-	if os.Getenv("DEV") == "true" {
-		_, callerFile, _, _ := runtime.Caller(0)
-		tmpl, err = template.ParseFiles(filepath.Join(filepath.Dir(callerFile), templateFilename))
-	} else {
-		tmpl, err = template.ParseFS(templateFS, templateFilename)
-	}
+	tmpl, err := loadTemplates()
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to parse template", "err", err.Error())
 		return
@@ -97,4 +106,13 @@ type query struct {
 
 func (q query) Bool(key string) bool {
 	return strings.ToLower(q.r.URL.Query().Get(key)) == "true"
+}
+
+func loadTemplates() (*template.Template, error) {
+	if os.Getenv("DEV") == "true" {
+		_, callerFile, _, _ := runtime.Caller(0)
+		return template.ParseGlob(filepath.Join(filepath.Dir(callerFile), templateFilename))
+	}
+
+	return template.ParseFS(templateFS, templateFilename)
 }

@@ -31,7 +31,7 @@ const (
 const (
 	CFProgram           Program = "cfp"
 	WinterProgram       Program = "winter"
-	SpringSummerProgram Program = "spring/summer"
+	SpringSummerProgram Program = "springsummer"
 )
 
 var azTime = time.FixedZone("AZ", -7)
@@ -47,7 +47,7 @@ func ParseProgram(p string) (Program, error) {
 		return CFProgram, nil
 	case string(WinterProgram):
 		return WinterProgram, nil
-	case "spring", "summer":
+	case string(SpringSummerProgram), "spring", "summer":
 		return SpringSummerProgram, nil
 	default:
 		return "", errors.New("unknown program")
