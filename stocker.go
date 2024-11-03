@@ -175,7 +175,7 @@ func (s Calendar) Last() Week {
 	now := getNow().In(azTime)
 
 	for _, data := range slices.Backward(s) {
-		if data.Stock == "" {
+		if data.Stock == NoneFish {
 			continue
 		}
 		if data.Time().Before(now) {

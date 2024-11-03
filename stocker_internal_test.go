@@ -59,6 +59,7 @@ func TestSortNext(t *testing.T) {
 	getNow = func() time.Time {
 		return time.Date(2024, time.November, 2, 13, 0, 0, 0, time.UTC)
 	}
+	defer func() { getNow = time.Now }()
 
 	nextWaters := SortNext(stockData)
 	assert.Equal(t, []map[string]Week{
@@ -126,17 +127,14 @@ func TestSortLast(t *testing.T) {
 	getNow = func() time.Time {
 		return time.Date(2024, time.November, 2, 13, 0, 0, 0, time.UTC)
 	}
+	defer func() { getNow = time.Now }()
 
 	nextWaters := SortLast(stockData)
 	assert.Equal(t, []map[string]Week{
 		{"Avondale - Alamar Park Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Unknown"}},
 		{"Avondale - Festival Fields Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Unknown"}},
 		{"Avondale - Friendship Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Buckeye - Sundance Park Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Casa Grande - Dave White Regional Park": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Chandler - Desert Breeze Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Chandler - Veterans Oasis Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Gila Bend - Benders Pond (NEW)": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Gilbert - Discovery Ponds": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Gilbert - Freestone Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Gilbert - Gilbert Regional Park": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
@@ -144,43 +142,83 @@ func TestSortLast(t *testing.T) {
 		{"Gilbert - Water Ranch Lake *(Special Regulations)": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Glendale - Bonsall Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Glendale - Heroes Regional Park Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Maricopa - Copper Sky Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Maricopa - Pacana Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Mesa - Eastmark Phase 4 Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
 		{"Mesa - Greenfield Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Mesa - Red Mountain Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Mesa - Riverview Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Payson - Green Valley Lakes": {Month: 10, Day: 28, Year: 2024, Stock: "Trout"}},
-		{"Peoria - Paloma Park": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Peoria - Pioneer Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Peoria - Rio Vista Pond": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Phoenix - Alvord Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Phoenix - Cortez Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Phoenix - Desert West Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Phoenix - Encanto Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Phoenix - Papago Ponds": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Phoenix - Roadrunner Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Phoenix - Steele Indian School Pond": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Prescott Valley - Fain Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Prescott Valley - Yavapai Lakes (Urban Forest Park)": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Queen Creek - Mansel Carter Oasis Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Safford - Graham County Fairgrounds": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Sahuarita - Sahuarita Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Scottsdale - Chaparral Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Show Low Creek (Meadow at Bluff Trail)": {Month: 10, Day: 28, Year: 2024, Stock: "Trout"}},
-		{"Somerton - Council Avenue Pond": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"St. Johns - Patterson Ponds": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Surprise - Surprise Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Tempe - Evelyn Hallman Pond": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Tempe - Kiwanis Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
 		{"Tempe - Tempe Town Lake": {Month: 10, Day: 28, Year: 2024, Stock: "Catfish"}},
-		{"Tucson - Kennedy Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Tucson - Lakeside Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Tucson - Silverbell Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Yuma - Fortuna Lake": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Yuma - PAAC Pond": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
-		{"Yuma - West Wetlands Pond": {Month: 10, Day: 28, Year: 2024, Stock: "None"}},
+		{"Buckeye - Sundance Park Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Chandler - Desert Breeze Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Unknown"}},
+		{"Chandler - Veterans Oasis Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Maricopa - Copper Sky Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Unknown"}},
+		{"Mesa - Red Mountain Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Mesa - Riverview Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Peoria - Paloma Park": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Peoria - Pioneer Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Peoria - Rio Vista Pond": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Alvord Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Cortez Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Desert West Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Encanto Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Papago Ponds": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Phoenix - Steele Indian School Pond": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Queen Creek - Mansel Carter Oasis Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Safford - Graham County Fairgrounds": {Month: 10, Day: 21, Year: 2024, Stock: "Unknown"}},
+		{"Sahuarita - Sahuarita Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Scottsdale - Chaparral Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Surprise - Surprise Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Tempe - Kiwanis Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Tucson - Kennedy Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Tucson - Lakeside Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Tucson - Silverbell Lake": {Month: 10, Day: 21, Year: 2024, Stock: "Catfish"}},
+		{"Prescott Valley - Fain Lake": {Month: 10, Day: 14, Year: 2024, Stock: "Trout"}},
+		{"Prescott Valley - Yavapai Lakes (Urban Forest Park)": {Month: 10, Day: 14, Year: 2024, Stock: "Trout"}},
+		{"St. Johns - Patterson Ponds": {Month: 10, Day: 14, Year: 2024, Stock: "Trout"}},
+		{"Gila Bend - Benders Pond (NEW)": {Month: 10, Day: 7, Year: 2024, Stock: "Catfish"}},
+		{"Somerton - Council Avenue Pond": {Month: 10, Day: 7, Year: 2024, Stock: "Catfish"}},
+		{"Yuma - Fortuna Lake": {Month: 10, Day: 7, Year: 2024, Stock: "Catfish"}},
+		{"Yuma - PAAC Pond": {Month: 10, Day: 7, Year: 2024, Stock: "Catfish"}},
+		{"Yuma - West Wetlands Pond": {Month: 10, Day: 7, Year: 2024, Stock: "Catfish"}},
 	}, nextWaters)
+}
+
+func TestNextLast(t *testing.T) {
+	srv, r := createTestService(t, cfpFixture)
+	defer func() {
+		assert.NoError(t, r.Stop())
+	}()
+
+	water := "Queen Creek - Mansel Carter Oasis Lake"
+	stockData, _, err := Get(srv, CFProgram, []string{water})
+	assert.NoError(t, err)
+
+	getNow = func() time.Time {
+		return time.Date(2024, time.November, 2, 13, 0, 0, 0, time.UTC)
+	}
+	defer func() { getNow = time.Now }()
+
+	t.Run("Last", func(t *testing.T) {
+		last := stockData[water].Last()
+		assert.Equal(t, Week{
+			Month: time.October,
+			Day:   21,
+			Year:  2024,
+			Stock: Catfish,
+		}, last)
+	})
+
+	t.Run("Last", func(t *testing.T) {
+		next := stockData[water].Next()
+		assert.Equal(t, Week{
+			Month: time.November,
+			Day:   4,
+			Year:  2024,
+			Stock: Catfish,
+		}, next)
+	})
 }
 
 func createTestService(t *testing.T, cassetteName string) (*sheets.Service, *recorder.Recorder) {
