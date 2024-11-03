@@ -46,7 +46,7 @@ func ParseProgram(p string) (Program, error) {
 	case string(CFProgram):
 		return CFProgram, nil
 	case string(WinterProgram):
-		return CFProgram, nil
+		return WinterProgram, nil
 	case "spring", "summer":
 		return SpringSummerProgram, nil
 	default:
