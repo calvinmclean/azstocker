@@ -15,13 +15,22 @@
 
 <div class="uk-margin-top">
     <h1 class="uk-heading-medium uk-text-center">Stocker</h1>
+
+    {{ $programName := "" }}
     {{ if eq .program "cfp" }}
-    <h4 class="uk-text-center">Community Fishing Program</h4>
+    {{ $programName = "Community Fishing Program" }}
     {{ else if eq .program "winter" }}
-    <h4 class="uk-text-center">Winter</h4>
+    {{ $programName = "Winter" }}
     {{ else if eq .program "springsummer" }}
-    <h4 class="uk-text-center">Spring & Summer</h4>
+    {{ $programName = "Spring & Summer" }}
     {{ end }}
+    <nav class="uk-text-center">
+        <ul class="uk-breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/{{ .program }}">{{ $programName }}</a></li>
+        </ul>
+    </nav>
+
     <div>
         <div class="uk-card uk-card-default" style="margin: 5%;">
             <div class="uk-card-body">
