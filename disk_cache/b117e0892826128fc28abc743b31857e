@@ -1,0 +1,16 @@
+HTTP/2.0 200 OK
+Connection: close
+Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+Cache-Control: private
+Content-Type: application/json; charset=UTF-8
+Date: Sat, 02 Nov 2024 23:23:32 GMT
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-L2-Request-Path: l2-managed-6
+X-Xss-Protection: 0
+
+{"range":"'CFP Stocking Calendar Schedule'!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}

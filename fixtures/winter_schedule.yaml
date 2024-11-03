@@ -1,0 +1,1285 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 5f7c5fb809fe1ed29c21a8b95c6f7325/16934379066754161773;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 17:50:12 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 395.527167ms
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - c3c411b028950139cddcba532f19c970/2793385320623261618;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 17:50:12 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 262.199125ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 12b25383aa54e9236510aad5c69554a5/18365593335174205472;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 18:15:07 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 3.410602416s
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 143bf1b58b3e37b9241bae3c6d0b7489/954904203874561753;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 18:15:07 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 324.580791ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - d1a4dc73705ded208e2b2b9c480de8be/14842304400037962901;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:33 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 3.893230125s
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 04b3c10a3afd3efc98b6f58d2d168a40/15771985656777751114;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:33 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 303.677833ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 4a8c65ec8782dac9c6185cb245ab951b/4338854166196316834;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:36 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 402.892208ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 5b72a40ae9b40c84c649b28c4a3caf22/8432681080597496782;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:36 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 305.049792ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 91909f1ec5d2af582eac7446642806c7/11795529457187242198;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:57:17 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 826.303292ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - d9954285253e3da554a0b27982d3aaaa/15617219027242053159;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:57:17 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 302.041833ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 52d46932ebc6e5268d477925356e524a/14663299035944229333;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 05:13:58 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 739.463375ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - dd2812b47371f1b92a83f11e2fdf2600/5969127858366189139;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 05:13:59 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 301.527625ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 43b3c0010e246eae8b6986bcb494b03a/7839955458985857259;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:32 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 344.2515ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - ac6ee7651aa48c7b3b24a2bce3417550/12678922539084568451;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:32 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 294.507542ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - c69724466b6753f36b651035403046c5/9207992278543195248;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:43 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 231.303334ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 037169ebb79758310e48e5fe618a152e/15624792697999768436;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:44 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 266.175666ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - b5ad237deadcee142ae976a9aa191c0b/13104383044325777940;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:43:31 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 652.961ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 0113f6452e921f7259eacaea62c2d5d4/12585207171769260941;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:43:31 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 220.770375ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - acbf2b496b1d1fe0226522f3fb61c648/11325360564184103934;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:22 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 393.496042ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 9347173a1143c2af2492791340d20ab0/12582930451101910710;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:22 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 304.362ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 555013946f5ac09557bfd6447cc0cb7c/260686686811527291;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21B4%3A5?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!B4:BD5","majorDimension":"ROWS","values":[["OCTOBER","","","","","","NOVEMBER","","","","DECEMBER","","","","","JANUARY","","","","FEBRUARY","","","","MARCH"],["1","7","14","21","28","","4","11","18","25","2","9","16","23","30","6","13","20","27","3","10","17","24","3","10","17","24","31"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:27 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 176.379833ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - ecb7451d1d20520e23aeb331721806ba/5089543898504598450;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM/values/2024-25%20Winter%21A9%3AAD?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''2024-25 Winter''!A9:AD1015","majorDimension":"ROWS","values":[["   FOOLS HOLLOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   RAINBOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SCOTT RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","X"],["   SHOW LOW LAKE","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   SHOW LOW CREEK"],["   SILVER CREEK","X","","","","","","X"],["   WOODLAND RESERVOIR","","","","","","","X","","","","","","","","","","","","","","","","","X"],["   WOODLAND RESERVOIR"],["Springerville/Eagar Area"],["   BECKER LAKE"],["   CARNERO LAKE"],["   NELSON RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   PRATT LAKE"],["Greer, Alpine Area"],["   ACKRE LAKE"],["   BIG LAKE"],["   BLACK R, E FORK "],["   BLACK R, W FORK "],["   BUNCH RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CRESCENT LAKE"],["   HULSEY LAKE"],["   LEE VALLEY LAKE"],["   LITTLE COLO R, GREER "],["   LITTLE COLORADO RIVER, SHEEP X-ING "],["   MEXICAN HAY LAKE"],["   LUNA LAKE"],["   PRATT"],["   RIVER RESERVOIR"],["   TUNNEL RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","X"],["Payson - Mogollon Rim Area"],["   BEAR CANYON LAKE"],["   BEAR FLATS"],["   BLACK CANYON LAKE"],["   BLUE RIDGE RESERVOIR      ******"],["   CANYON CREEK ","","","","","","","","","","","","","","","","","","","","","","","","X","X","X","X"],["   CHRISTOPHER CREEK "],["   CLEAR CREEK RESERVOIR"],["   EAST VERDE RIVER","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   HAIGLER CREEK","","","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   LONG TOM TANK"],["   KNOLL LAKE"],["   TONTO CREEK ","","X","","","","","","","","","","","","","","","","","","","","","","","","X","X"],["   TONTO CR, BEAR FLATS"],["   WILLOW SPRINGS LAKE"],["   WOODS CANYON LAKE"],["   WORKMAN CREEK"],["Flagstaff Area"],["   ASHURST LAKE                   ","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   BLUE RIDGE RESERVOIR (CC CRAGIN)"],["   FRANCIS SHORT POND"],["   HUFFER TANK"],["   KINNIKINICK LAKE"],["   LOWER LAKE MARY          "],["   UPPER LAKE MARY"],["   LONG LAKE"],["   MARSHALL LAKE"],["   MORTON LAKE"],["   MORTON POND"],["   Frances Short","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   HUFFER TANK"],["   L. LAKE MARY"],["   MORTON POND"],["   MORMON LAKE POND "],["   MORTON LAKE"],["   UPPER LAKE MARY"],["Williams Area"],["   CATARACT LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   CITY RESERVOIR","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   DOGTOWN LAKE                 "],["   ELK TANK"],["   JD TANK"],["   KAIBAB LAKE                      ","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["  MIDDLE TANK"],["  PERKINS TANK"],["   RUSSEL TANK"],["   SANTA FE LAKE","","","","","","","","","","","","","","","","","","","","","","","","","","","X"],["   WHITEHORSE LAKE"],["Page Area"],["   Lees Ferry"],["Verde Valley Area"],["   BEAVER CREEK (WET)","","X","","","","","X","","X","","","","","","","","","","","","","","","X"],["   DEADHORSE LAKE (ST PARK)","","","","","X","","","","X","","X","","X","","","","X","","X","","X","","X","X"],["   OAK CREEK ","X","","X","","","","X","","X","","","","","","","","","","","","","","","X","","X"],["   VERDE RIVER","","","","","","","","X","","X","","X","","X","","X","","X","","X","","X","","","X","","X"],["   WEST CLEAR CREEK","","X","","","","","X","","x","","","","","","","","","","","","","","","X"],["Prescott Area"],["   FAIN LAKE","","","","X","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   GOLDWATER LAKE","","X","","X","","","","X","","X","","X","","X","X","","X","","","","X","","X","X","","X"],["   LOWER GOLDWATER LAKE"],["   LYNX LAKE","","","","X","","","","X","","","","","","","","","","","","","X","","","","X"],["   MINGUS LAKE","","X","","X"],["   YAVAPAI LAKES","","X","","","","","X","","","","X","","X","","","X","","X","","X","","X","","X","","X"],["   WATSON LAKE","","","","","","","X","","","","","","X","","","X","","","","X"],["  WILLOW CREEK"],["Phoenix Area"],["   LOWER SALT RIVER","X","","X","X","X","","X","X","X","X","X","X","X","X","","X","X","X","X","X","X","X","X","X","X","X","X"],["  TEMPE TOWN LAKE"],["Southeast: Tucson, Safford Areas"],["   CLUFF POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   DANKWORTH POND","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","","","","X"],["   PENA BLANCA","","","","","","","","","","","","","","","","","","X","","","","","X","","","","X"],["GRAHAM COUNTY FAIRGROUNDS","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X"],["   RIGGS FLAT LAKE"],["   PARKER CANYON","","","","X","","","","","X","X","","X","","X","","X","","","","","X","","","","X"],["   PATAGONIA","","","","","","","","X","","","","","","X","","","","X","","","","X","","","X"],["   PENA BLANCA"],["   ROPER LAKE","","","","","","","X","","X","","X","","X","","X","","X","","","X","","X","","X","","X"],["   ROSE CANYON LAKE","","X","","","","","","","","","","","","","","","","","","","","","","","","X"],["FRYE MESA RESERVOIR"],["West/SW: Parker, Yuma, Gila Bend Areas"],["PARKER (LA PAZ)","","","","","","","","","","","","","","","","","","","","","X"],["FORTUNA LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["REDONDO LAKE","","","","","","","","X","","","","X","","","","X","","","","X"],["PAAC POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["WEST WETLANDS POND","","","","","","","X","","","","X","","","","","","X","","","","X"],[" COUNCIL AVENUE POND","","","","","","","X","","","","X","","","","","","X","","","","X"],["BENDER''S POND","","","","","","","","","","","X"],["All the scheduled stockings are subject to change depending on weather, lake/stream water quality, water quantity or road conditions."],["Take a look at a comprehensive map of Arizona waters to FISH and BOAT"],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],["https://www.azgfd.com/","PURCHASE YOUR FISHING LICENSE"],["","","","","","","","","","","","","","","","","","","","Check for Forest closures before you go:","","","","","","https://www.azgfd.com/fishing/stockschedule/"],["","","","","","","","","","","","","","","FISHING REGULATIONS"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:27 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 307.20625ms

@@ -1,0 +1,1403 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - da98d19463308c4fc973d59f16f533e7/7026797682993804023;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 17:50:13 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 832.511375ms
+    - id: 1
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - f8ea960ae67f8afaca055a4618e0962b/11260210045364346172;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 17:50:13 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 307.425ms
+    - id: 2
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - edce08af7da51e6b1eb31a9d7463a8e4/2062735265328909458;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 18:15:08 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 297.924459ms
+    - id: 3
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 32485c4f60f4e2c634c6cddbc3427dba/3098508732762040908;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 18:15:08 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 244.264875ms
+    - id: 4
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 7cfbef3da416cc90eddfb67b827c425f/16701666917795729918;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:33 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 302.313791ms
+    - id: 5
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - cd2049b1c55a91da80611fdb8bf41f9f/17631348178830485426;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:33 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 292.8355ms
+    - id: 6
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - cc5f89a422a554503af1001896e41b10/12598283014565108730;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:37 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 295.335625ms
+    - id: 7
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 2a3b367a0b07132c152529030f0949bd/16692109928966288422;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:02:37 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 307.070375ms
+    - id: 8
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 7ebf5bdef7f9cca37d500002dd92a8e0/992444903364009081;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:57:18 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 294.402917ms
+    - id: 9
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 6f5dd0e7e3cdcc4070f3cdfd053c377a/4813853002737011403;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Fri, 01 Nov 2024 19:57:18 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 304.722375ms
+    - id: 10
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 236cf04bc9624672d11ad3bb55289019/15649363888784507856;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 05:13:59 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 294.939084ms
+    - id: 11
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 36b8a59438ee97e744903577f8c722f6/6955193810701383757;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z995","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Scottsdale - Eldorado Pond *"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 05:13:59 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 305.815584ms
+    - id: 12
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 9daa39088e0aa876f9ac377796e51a65/10611175763844169682;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:20:06 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 367.512875ms
+    - id: 13
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=3600
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 1872ba609d4a231b0ae3e6305781cbb7/201684664564853909;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:20:07 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 289.647291ms
+    - id: 14
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 20cf70448b320ca07a16657e685f4c38/17445551653975236123;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:32 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 279.796625ms
+    - id: 15
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - edc53b81d16d4e96e9f97c67c35c76a0/3838056135324395186;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:33 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 303.903541ms
+    - id: 16
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - f5e4d4c52c632a85ad199321f09ee675/3595130518723435129;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:44 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 292.005792ms
+    - id: 17
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 64ab6133751e9ed7ffc1fe106e8f6ee4/10011930938180008317;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:23:44 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 126.512042ms
+    - id: 18
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 1a1429a0d2ee1d434bada899ec8f0568/12065750932337529606;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:43:31 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 241.7145ms
+    - id: 19
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 0982838a6e94d37db0dd7c47ef21b68c/11546576159292705662;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:43:31 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 218.172125ms
+    - id: 20
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - c1e76ad652c9dc95b46b15681c360a79/13768443839198581101;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:22 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 294.657333ms
+    - id: 21
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 889a09b02319583e388a81514fd4d239/15026013726116387877;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:23 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 303.493542ms
+    - id: 22
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 661e160d2a81751f36aa289e858212ba/9918119635220958954;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21B8%3A9?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!B8:Z9","majorDimension":"ROWS","values":[["October 2024","","","","November 2024","","","","December 2024"],["7-11","14-18","21-25","28-1","4-8","11-15","18-22","25-29","2-6","9-13","16-20","23-27","30-3"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:28 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 290.697583ms
+    - id: 23
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: sheets.googleapis.com
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Cache-Control:
+                - max-age=60
+            User-Agent:
+                - google-api-go-client/0.5
+            X-Cloud-Trace-Context:
+                - 54e350b2c4a6bb8f0b3abe958549a751/14746976842619128097;o=0
+            X-Goog-Api-Client:
+                - gl-go/1.23.1 gdcl/0.203.0
+        url: https://sheets.googleapis.com/v4/spreadsheets/1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA/values/CFP%20Stocking%20Calendar%20Schedule%21A11%3AZ?alt=json&prettyPrint=false
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: '{"range":"''CFP Stocking Calendar Schedule''!A11:Z994","majorDimension":"ROWS","values":[["Buckeye - Sundance Park Lake","C","","C","","C","","","","T","","T"],["Chandler - Desert Breeze Lake","** No water drop zone","","** No water drop zone","","C","","","","","T","","","T"],["Chandler - Veterans Oasis Lake","C","","C","","C","","","","","T","","","T"],["Maricopa - Copper Sky Lake","** Algae bloom","","** Algae bloom","","C","","","","","T","","","T"],["Mesa - Red Mountain Lake","C","","C","","C","","","","T","","T"],["Mesa - Riverview Lake","C","","C","","C","","","","T"],["Peoria - Paloma Park","C","","C","","C","","","","T","","T"],["Peoria - Pioneer Lake","C","","C","","C","","","","T","","T"],["Peoria - Rio Vista Pond","C","","C","","C","","","","T","","T"],["Phoenix - Alvord Lake","C","","C","","C","","","","T","","T"],["Phoenix - Cortez Lake","C","","C","","C","","","","T","","T"],["Phoenix - Desert West Lake","C","","C","","C","","","","T"],["Phoenix - Encanto Lake","C","","C","","C","","","","T","","T"],["Phoenix - Papago Ponds","C","","C","","C","","","","T","","T"],["Phoenix - Steele Indian School Pond","C","","C","","C","","","","T","","T"],["Queen Creek - Mansel Carter Oasis Lake","C","","C","","C","","","","","T","","","T"],["Scottsdale - Chaparral Lake","C","","C","","C","","","","T","","T"],["Surprise - Surprise Lake","C","","C","","C","","","","T","","T"],["Tempe - Evelyn Hallman Pond","","","","C"],["Tempe - Kiwanis Lake","** Algae bloom","","C","","C","","","","","T","","","T"],[],["TUCSON / SAHUARITA AREA CORE WATERS"],["Tucson - Kennedy Lake","C","","C","","C","","","","T","","T"],["Tucson - Lakeside Lake","C","","C","","C","","","","T","","T"],["Tucson - Silverbell Lake","C","","C","","C","","","","T","","T"],["Sahuarita - Sahuarita Lake","C","","C","","C","","","","T","","T"],[],["PHOENIX / MARICOPA AREA EXPANSION WATERS"],["Avondale - Alamar Park Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Avondale - Friendship Pond","","","","C","","","","","T","","","T"],["Avondale - Festival Fields Pond","","","","** Unconfirmed results following golden algae treatment ","","","","","T","","","T"],["Casa Grande - Dave White Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - Discovery Ponds","","","","C","","","","","","T","","","T"],["Gilbert - Freestone Pond","","","","C","","","","","","T","","","T"],["Gilbert - Gilbert Regional Park","","","","C","","","","","","T","","","T"],["Gilbert - McQueen Pond","","","","C","","","","","","T","","","T"],["Gilbert - Water Ranch Lake *(Special Regulations)","","","","C","","","","","","T","","","T"],["Glendale - Heroes Regional Park Pond","","","","C","","","","","T","","","T"],["Glendale - Bonsall Pond","","","","C","","","","","T","","","T"],["Maricopa - Pacana Pond","","","","C","","","","","","T","","","T"],["Mesa - Eastmark Phase 4 Pond","","","","C","","","","","","T","","","T"],["Mesa - Greenfield Pond","","","","C","","","","","","T"],["Phoenix - Roadrunner Pond","","","","C","","","","","T","","","T"],["Tempe - Tempe Town Lake","","","","C"],[],["SAFFORD AREA WATER"],["Safford - Graham County Fairgrounds","","","** Very low water","","","","","","T","","","T"],[],["PAYSON AREA WATERS"],["Payson - Green Valley Lakes","","T","","T","","","T","","T","","T"],[],["PRESCOTT AREA WATERS"],["Prescott Valley - Fain Lake","","T","","","","","T"],["Prescott Valley - Yavapai Lakes (Urban Forest Park)","","T","","","","","T"],[],["SHOW LOW / ST JOHNS / EAGAR AREA WATERS"],["Eager - Cowpunch Pond (NEW)"],["Show Low Creek (Meadow at Bluff Trail)","","T","","T","","","T"],["St. Johns - Patterson Ponds","","T","","","","","T"],[],["FLAGSTAFF/WILLIAMS AREA WATER"],["Ash Fork - Stone Dam"],[],["GILA BEND / YUMA / SOMERTON AREA WATERS"],["Gila Bend - Benders Pond (NEW)","C","","","","C","","","","","","T"],["Yuma - Fortuna Lake","C","","","","C","","","","","","T"],["Yuma - PAAC Pond","C","","","","C","","","","","","T"],["Yuma - West Wetlands Pond","C","","","","C","","","","","","T"],["Somerton - Council Avenue Pond","C","","","","C","","","","","","T"],["* Effective January 1, 2015 Water Ranch Lake became Catch-and-Release for bass and sunfish, catch-and-keep for catfish and trout. Single barbless hooks are required."],["STOCKING DATES ARE NOT A GUARANTEE: Schedule may change due to weather, site access, poor water quality, golden algae, availability of fish, ongoing fish kill, & schedules of fish suppliers."],["## SUNFISH AND SUB-LEGAL (\u003c 13\") BASS ARE STOCKED EACH SPRING INTO CFP WATERS. STOCKING DATES ARE NOT RELEASED TO MAINTAIN POPULATIONS ##"]]}'
+        headers:
+            Alt-Svc:
+                - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+            Cache-Control:
+                - private
+            Content-Type:
+                - application/json; charset=UTF-8
+            Date:
+                - Sat, 02 Nov 2024 23:53:28 GMT
+            Server:
+                - ESF
+            Vary:
+                - Origin
+                - X-Origin
+                - Referer
+            X-Content-Type-Options:
+                - nosniff
+            X-Frame-Options:
+                - SAMEORIGIN
+            X-L2-Request-Path:
+                - l2-managed-6
+            X-Xss-Protection:
+                - "0"
+        status: 200 OK
+        code: 200
+        duration: 235.6805ms
