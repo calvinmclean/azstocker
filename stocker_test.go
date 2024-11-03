@@ -25,7 +25,7 @@ func TestGet(t *testing.T) {
 	tests := []struct {
 		name     string
 		fixture  string
-		program  string
+		program  stocker.Program
 		waters   []string
 		expected map[string]stocker.Calendar
 	}{

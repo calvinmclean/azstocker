@@ -2,6 +2,7 @@ package stocker
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"iter"
 	"log"
@@ -25,14 +26,33 @@ const (
 
 	cfpStockingSheetID   = "1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA"
 	cfpStockingSheetName = "CFP Stocking Calendar Schedule"
+)
 
-	CFProgram     = "cfp"
-	WinterProgram = "winter"
-	SpringProgram = "spring"
-	SummerProgram = "summer"
+const (
+	CFProgram           Program = "cfp"
+	WinterProgram       Program = "winter"
+	SpringSummerProgram Program = "spring/summer"
 )
 
 var azTime = time.FixedZone("AZ", -7)
+
+// Program is an enum type for AZ GFD stocking programs: cfp (community fishing program), winter,
+// spring, and summer (spring/summer are the same)
+type Program string
+
+// ParseProgram parses a string to return a valid Program
+func ParseProgram(p string) (Program, error) {
+	switch strings.ToLower(p) {
+	case string(CFProgram):
+		return CFProgram, nil
+	case string(WinterProgram):
+		return CFProgram, nil
+	case "spring", "summer":
+		return SpringSummerProgram, nil
+	default:
+		return "", errors.New("unknown program")
+	}
+}
 
 // Week represents a date on the calendar and shows stocking data for that week range
 type Week struct {
@@ -154,8 +174,8 @@ type sheet struct {
 }
 
 // create a new Sheet depending on the required program
-func newSheet(srv *sheets.Service, program string) *sheet {
-	switch strings.ToLower(program) {
+func newSheet(srv *sheets.Service, program Program) *sheet {
+	switch program {
 	case CFProgram:
 		return &sheet{
 			srv:           srv,
@@ -174,7 +194,7 @@ func newSheet(srv *sheets.Service, program string) *sheet {
 			dateRange:     "B4:5",
 			skipDataCol:   5,
 		}
-	case SpringProgram, SummerProgram:
+	case SpringSummerProgram:
 		return &sheet{
 			srv:           srv,
 			spreadsheetID: springSummerStockingSheetID,
@@ -354,7 +374,7 @@ func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 // Get will parse the Google Sheet for the specified Program. If waters are provided, it will only return data
 // for these waters. Otherwise, it provides for all. This returns a map of water name to the Calendar data. It
 // also returns a list of all waters in the Sheet
-func Get(srv *sheets.Service, program string, waters []string) (map[string]Calendar, []string, error) {
+func Get(srv *sheets.Service, program Program, waters []string) (map[string]Calendar, []string, error) {
 	sheet := newSheet(srv, program)
 	if sheet == nil {
 		return nil, nil, fmt.Errorf("unable to initialize sheet for program %q", program)

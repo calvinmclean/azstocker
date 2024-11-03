@@ -42,7 +42,13 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Query().Has(watersQueryParam) {
 		waters = strings.Split(r.URL.Query().Get(watersQueryParam), ",")
 	}
-	program := r.PathValue("program")
+
+	programStr := r.PathValue("program")
+	program, err := stocker.ParseProgram(programStr)
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "invalid program", "program", programStr, "err", err.Error())
+		return
+	}
 
 	q := query{r}
 	showAll := q.Bool("showAll")

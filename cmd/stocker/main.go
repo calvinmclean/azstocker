@@ -17,7 +17,7 @@ const cacheDir = "./disk_cache"
 
 func main() {
 	var debug, showNext, showLast, showAllStock, showAll bool
-	var apiKey, program, addr string
+	var apiKey, programStr, addr string
 	var waters []string
 	app := &cli.App{
 		Name: "stocker",
@@ -55,10 +55,15 @@ func main() {
 						Aliases:     []string{"p"},
 						DefaultText: "CFP",
 						Usage:       "AZ GFD Fishing program to search (CFP, Spring/Summer, or Winter)",
-						Destination: &program,
+						Destination: &programStr,
 					},
 				},
 				Action: func(c *cli.Context) error {
+					program, err := stocker.ParseProgram(programStr)
+					if err != nil {
+						return err
+					}
+
 					rt := transport.NewDiskCacheControl(cacheDir, 1*time.Hour, nil)
 					if debug {
 						rt = transport.Log(rt)
