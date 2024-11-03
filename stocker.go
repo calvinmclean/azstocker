@@ -34,6 +34,7 @@ const (
 
 var azTime = time.FixedZone("AZ", -7)
 
+// Week represents a date on the calendar and shows stocking data for that week range
 type Week struct {
 	Month time.Month
 	Day   int
@@ -41,10 +42,12 @@ type Week struct {
 	Stock string
 }
 
+// Time creates a time.Time from the Year, Month, and Date of stocking
 func (s Week) Time() time.Time {
 	return time.Date(s.Year, s.Month, s.Day, 0, 0, 0, 0, azTime)
 }
 
+// String formats the Week to show the date and stocking data
 func (s Week) String() string {
 	if s.Year == 0 && s.Day == 0 {
 		return "No Data"
@@ -52,12 +55,15 @@ func (s Week) String() string {
 	return fmt.Sprintf("%d %s %d: %q", s.Year, s.Month.String(), s.Day, s.Stock)
 }
 
+// Calendar is and ordered list of Weeks and shows all available stocking data for a specific water
 type Calendar []Week
 
+// String formats the Calendar and excludes non-stocked dates
 func (s Calendar) String() string {
 	return s.Format(false)
 }
 
+// Format all dates in the Calendar. If hideEmpty is set, it will exclude non-stocking days
 func (s Calendar) Format(hideEmpty bool) string {
 	var sb strings.Builder
 	for _, data := range s {
@@ -70,6 +76,7 @@ func (s Calendar) Format(hideEmpty bool) string {
 	return strings.TrimSuffix(sb.String(), "\n")
 }
 
+// DetailFormat creates string with detailed explanation of the Calendar and accepts a few boolean controls
 func (s Calendar) DetailFormat(showAll, showAllStock, next, last bool) string {
 	var sb strings.Builder
 
@@ -146,6 +153,7 @@ type sheet struct {
 	skipDataCol int
 }
 
+// create a new Sheet depending on the required program
 func newSheet(srv *sheets.Service, program string) *sheet {
 	switch strings.ToLower(program) {
 	case CFProgram:
@@ -198,6 +206,8 @@ func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, []st
 	return data, allWaterNames, nil
 }
 
+// getStockingData parses a sheet to populate the provided Calendar dates with stocking data for specified waters.
+// Also returns a list of all water names in the sheet
 func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (map[string]Calendar, []string, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.scheduleRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
@@ -232,6 +242,7 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 	return result, allWaterNames, nil
 }
 
+// getDataFromRow parses a row and adds stocking data to the provided Calendar dates
 func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, error) {
 	// if s.skipDataCol is set, then we will need to skip a col eventually and need to account for this
 	// when appending empty data
@@ -263,6 +274,7 @@ func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, 
 	return result, nil
 }
 
+// initializeCalendar parses the date rows of the Sheet to initialize the Calendar dates
 func (s *sheet) initializeCalendar() (Calendar, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.dateRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
@@ -317,6 +329,8 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 	return result, nil
 }
 
+// NewService is a shortcut for creating a sheets.Service using an API key and a custom HTTP RoundTripper.
+// If RoundTripper is not provided, http.DefaultTransport will be used
 func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 	transport, err := googleHTTP.NewTransport(context.Background(), rt, option.WithAPIKey(apiKey))
 	if err != nil {
@@ -337,6 +351,9 @@ func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 	return srv, nil
 }
 
+// Get will parse the Google Sheet for the specified Program. If waters are provided, it will only return data
+// for these waters. Otherwise, it provides for all. This returns a map of water name to the Calendar data. It
+// also returns a list of all waters in the Sheet
 func Get(srv *sheets.Service, program string, waters []string) (map[string]Calendar, []string, error) {
 	sheet := newSheet(srv, program)
 	if sheet == nil {
