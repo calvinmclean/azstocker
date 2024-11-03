@@ -8,4 +8,4 @@ FROM alpine:latest AS production
 RUN mkdir /app
 WORKDIR /app
 COPY --from=build /build/stocker .
-ENTRYPOINT ["/app/stocker", "server"]
+ENTRYPOINT ["/app/stocker"]
