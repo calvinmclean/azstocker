@@ -85,6 +85,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	watersStr := strings.Join(waters, ", ")
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
 		"showAll":       showAll,
 		"showAllStock":  showAllStock,
@@ -93,6 +94,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 		"program":       program,
 		"calendar":      calendar,
 		"allWaterNames": allWaterNames,
+		"waters":        watersStr,
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())

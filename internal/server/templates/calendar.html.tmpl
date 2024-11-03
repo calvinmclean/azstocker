@@ -27,7 +27,12 @@
     <nav class="uk-text-center">
         <ul class="uk-breadcrumb">
             <li><a href="/">Home</a></li>
+            {{ if .waters }}
             <li><a href="/{{ .program }}">{{ $programName }}</a></li>
+            <li>{{ .waters }}</li>
+            {{ else }}
+            <li>{{ $programName }}</li>
+            {{ end }}
         </ul>
     </nav>
 
