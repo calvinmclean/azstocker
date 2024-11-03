@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -13,11 +14,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const cacheDir = "./disk_cache"
-
 func main() {
 	var debug, showNext, showLast, showAllStock, showAll bool
-	var apiKey, programStr, addr string
+	var apiKey, programStr, addr, cacheDir string
+	var cacheMaxAge time.Duration
 	var waters []string
 	app := &cli.App{
 		Name: "stocker",
@@ -29,6 +29,17 @@ func main() {
 				Usage:       "Google API key to access Sheets",
 				EnvVars:     []string{"API_KEY"},
 				Destination: &apiKey,
+			},
+			&cli.DurationFlag{
+				Name:        "cache-max-age",
+				Usage:       "max time for cache expiration",
+				Value:       time.Hour,
+				Destination: &cacheMaxAge,
+			},
+			&cli.StringFlag{
+				Name:        "cache-dir",
+				Usage:       "directory for disk cache. By default, in-memory cache is used",
+				Destination: &cacheDir,
 			},
 		},
 		DefaultCommand: "get",
@@ -64,7 +75,7 @@ func main() {
 						return err
 					}
 
-					rt := transport.NewDiskCacheControl(cacheDir, 1*time.Hour, nil)
+					rt := setupCacheControl(cacheMaxAge, cacheDir)
 					if debug {
 						rt = transport.Log(rt)
 					}
@@ -98,7 +109,7 @@ func main() {
 				},
 				Description: "run an HTTP server that responds with the AZ GFD fish stocking schedule",
 				Action: func(ctx *cli.Context) error {
-					rt := transport.NewDiskCacheControl(cacheDir, 1*time.Hour, nil)
+					rt := setupCacheControl(cacheMaxAge, cacheDir)
 					if debug {
 						rt = transport.Log(rt)
 					}
@@ -115,5 +126,14 @@ func main() {
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
+	}
+}
+
+func setupCacheControl(maxAge time.Duration, dir string) http.RoundTripper {
+	switch dir {
+	case "":
+		return transport.NewCacheControl(maxAge, nil)
+	default:
+		return transport.NewDiskCacheControl(dir, maxAge, nil)
 	}
 }
