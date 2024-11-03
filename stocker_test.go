@@ -325,6 +325,9 @@ func TestGetHTTPCache(t *testing.T) {
 		numRequests++
 		return nil
 	}, recorder.BeforeResponseReplayHook)(r)
+	defer func() {
+		assert.NoError(t, r.Stop())
+	}()
 
 	_, _, err := stocker.Get(srv, stocker.WinterProgram, []string{})
 	assert.NoError(t, err)

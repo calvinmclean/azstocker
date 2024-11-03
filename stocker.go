@@ -17,6 +17,9 @@ import (
 	googleHTTP "google.golang.org/api/transport/http"
 )
 
+// override for setting time in tests
+var getNow = time.Now
+
 const (
 	springSummerStockingSheetID   = "1S5wsDfGzEInV64UKjUPzexAe2KOO1KocfB4dJH7oVrs"
 	springSummerStockingSheetName = "2024 Spring/Summer"
@@ -153,7 +156,7 @@ func (s Calendar) DetailFormat(showAll, showAllStock, next, last bool) string {
 
 // Next returns the closest upcoming StockingData based on the current time
 func (s Calendar) Next() Week {
-	now := time.Now().In(azTime)
+	now := getNow().In(azTime)
 
 	for _, data := range s {
 		if data.Stock == NoneFish {
@@ -169,7 +172,7 @@ func (s Calendar) Next() Week {
 
 // Last returns the most recent StockingData based on the current time
 func (s Calendar) Last() Week {
-	now := time.Now().In(azTime)
+	now := getNow().In(azTime)
 
 	for _, data := range slices.Backward(s) {
 		if data.Stock == "" {
@@ -342,7 +345,7 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 	}
 
 	result := Calendar{}
-	year := time.Now().Year()
+	year := getNow().Year()
 	monthIndex := 0
 	prevDay := -1
 	for _, date := range nonEmptyCells(dayCells) {
@@ -409,6 +412,60 @@ func Get(srv *sheets.Service, program Program, waters []string) (map[string]Cale
 		return nil, nil, err
 	}
 	return stockData, allWaterNames, nil
+}
+
+// SortNext returns a slice of waters and their closest upcoming stocking, sorted by time
+func SortNext(data map[string]Calendar) []map[string]Week {
+	return sortNextOrRecent(data, true)
+}
+
+// SortLast returns a slice of waters and their most recent stocking, sorted by time
+func SortLast(data map[string]Calendar) []map[string]Week {
+	return sortNextOrRecent(data, false)
+}
+
+// sortNextOrRecent loops through the provided data to get the closest recent or upcoming stocking
+// and then sorts by this time
+func sortNextOrRecent(data map[string]Calendar, next bool) []map[string]Week {
+	result := []map[string]Week{}
+	for waterName, calendar := range data {
+		getWeek := calendar.Last
+		if next {
+			getWeek = calendar.Next
+		}
+
+		week := getWeek()
+		if week.Year == 0 {
+			continue
+		}
+
+		result = append(result, map[string]Week{waterName: week})
+	}
+
+	// Sort by stocking time or alphabetically if the time is the same
+	slices.SortFunc(result, func(a map[string]Week, b map[string]Week) int {
+		var aKey, bKey string
+		for waterName := range a {
+			aKey = waterName
+		}
+		for waterName := range b {
+			bKey = waterName
+		}
+
+		comp := 0
+		if next {
+			comp = a[aKey].Time().Compare(b[bKey].Time())
+		} else {
+			comp = b[bKey].Time().Compare(a[aKey].Time())
+		}
+
+		if comp == 0 {
+			comp = strings.Compare(aKey, bKey)
+		}
+		return comp
+	})
+
+	return result
 }
 
 func isNewYear(months []time.Month, i int) bool {
