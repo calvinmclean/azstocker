@@ -1,5 +1,10 @@
 # Stocker
 
+[![GitHub go.mod Go version (subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/calvinmclean/stocker?filename=go.mod)](https://github.com/calvinmclean/stocker/blob/main/go.mod)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/calvinmclean/stocker/main.yml?branch=main)
+[![License](https://img.shields.io/github/license/calvinmclean/stocker)](https://github.com/calvinmclean/stocker/blob/main/LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/calvinmclean/stocker.svg)](https://pkg.go.dev/github.com/calvinmclean/stocker)
+
 Stocker leverages data from [AZ GFD's Stocking Schedule](https://www.azgfd.com/fishing-2/where-to-fish/fish-stocking-schedule/) to provide on-demand information about fish stocking in Arizona.
 
 ## How To
