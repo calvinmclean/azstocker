@@ -180,7 +180,7 @@ func newSheet(srv *sheets.Service, program string) *sheet {
 	}
 }
 
-func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, error) {
+func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, []string, error) {
 	lowerCaseWaterNames := []string{}
 	for _, w := range waterNames {
 		lowerCaseWaterNames = append(lowerCaseWaterNames, strings.ToLower(w))
@@ -188,23 +188,24 @@ func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, erro
 
 	stockingCalendar, err := s.initializeCalendar()
 	if err != nil {
-		return nil, fmt.Errorf("error initializing calendar: %w", err)
+		return nil, nil, fmt.Errorf("error initializing calendar: %w", err)
 	}
 
-	waters, err := s.populateStockingData(stockingCalendar, lowerCaseWaterNames)
+	data, allWaterNames, err := s.getStockingData(stockingCalendar, lowerCaseWaterNames)
 	if err != nil {
-		return nil, fmt.Errorf("error finding water rows: %w", err)
+		return nil, nil, fmt.Errorf("error finding water rows: %w", err)
 	}
-	return waters, nil
+	return data, allWaterNames, nil
 }
 
-func (s *sheet) populateStockingData(stockingCalendar Calendar, waterNames []string) (map[string]Calendar, error) {
+func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (map[string]Calendar, []string, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.scheduleRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
 	if err != nil {
-		return nil, fmt.Errorf("error getting data from sheet: %w", err)
+		return nil, nil, fmt.Errorf("error getting data from sheet: %w", err)
 	}
 
+	allWaterNames := []string{}
 	result := map[string]Calendar{}
 	for _, row := range resp.Values {
 		if len(row) < 2 {
@@ -215,19 +216,20 @@ func (s *sheet) populateStockingData(stockingCalendar Calendar, waterNames []str
 		if waterName == "" {
 			continue
 		}
+		allWaterNames = append(allWaterNames, waterName)
 		if len(waterNames) > 0 && !slices.Contains(waterNames, strings.ToLower(waterName)) {
 			continue
 		}
 
 		result[waterName], err = s.getDataFromRow(row[1:], stockingCalendar)
 		if err != nil {
-			// return nil, fmt.Errorf("error getting data for row %q: %w", cell, err)
+			// TODO: This is not best practice...
 			log.Printf("error getting data for row %q: %v", waterName, err)
 			continue
 		}
 	}
 
-	return result, nil
+	return result, allWaterNames, nil
 }
 
 func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, error) {
@@ -316,9 +318,6 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 }
 
 func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
-	// cacheControlRT := transport.NewDiskCacheControl(cacheDir, 1*time.Hour, rt)
-	// cacheControlRT = transport.Log(cacheControlRT)
-
 	transport, err := googleHTTP.NewTransport(context.Background(), rt, option.WithAPIKey(apiKey))
 	if err != nil {
 		return nil, fmt.Errorf("error creating transport: %w", err)
@@ -338,17 +337,17 @@ func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 	return srv, nil
 }
 
-func Get(srv *sheets.Service, program string, waters []string) (map[string]Calendar, error) {
+func Get(srv *sheets.Service, program string, waters []string) (map[string]Calendar, []string, error) {
 	sheet := newSheet(srv, program)
 	if sheet == nil {
-		return nil, fmt.Errorf("unable to initialize sheet for program %q", program)
+		return nil, nil, fmt.Errorf("unable to initialize sheet for program %q", program)
 	}
 
-	stockData, err := sheet.getDataForWaters(waters)
+	stockData, allWaterNames, err := sheet.getDataForWaters(waters)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return stockData, nil
+	return stockData, allWaterNames, nil
 }
 
 func isNewYear(months []time.Month, i int) bool {

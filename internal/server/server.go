@@ -1,8 +1,14 @@
 package server
 
 import (
-	"fmt"
+	"embed"
+	"html/template"
+	"log/slog"
 	"net/http"
+	"os"
+	"path/filepath"
+	"runtime"
+	"slices"
 	"strings"
 
 	"github.com/calvinmclean/stocker"
@@ -10,7 +16,13 @@ import (
 	"google.golang.org/api/sheets/v4"
 )
 
-const watersQueryParam = "waters"
+const (
+	watersQueryParam = "waters"
+	templateFilename = "templates/calendar.html.tmpl"
+)
+
+//go:embed templates/*
+var templateFS embed.FS
 
 func RunServer(addr string, srv *sheets.Service) error {
 	mux := http.NewServeMux()
@@ -38,15 +50,38 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	next := q.Bool("next")
 	last := q.Bool("last")
 
-	data, err := stocker.Get(s.srv, program, waters)
+	calendar, allWaterNames, err := stocker.Get(s.srv, program, waters)
 	if err != nil {
-		fmt.Fprintf(w, "error: %v", err)
+		slog.Log(r.Context(), slog.LevelError, "failed to get data", "err", err.Error())
 		return
 	}
 
-	for waterName, calendar := range data {
-		fmt.Fprintln(w, waterName)
-		fmt.Fprintln(w, calendar.DetailFormat(showAll, showAllStock, next, last))
+	slices.Sort(allWaterNames)
+
+	var tmpl *template.Template
+	if os.Getenv("DEV") == "true" {
+		_, callerFile, _, _ := runtime.Caller(0)
+		tmpl, err = template.ParseFiles(filepath.Join(filepath.Dir(callerFile), templateFilename))
+	} else {
+		tmpl, err = template.ParseFS(templateFS, templateFilename)
+	}
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "failed to parse template", "err", err.Error())
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
+		"showAll":       showAll,
+		"showAllStock":  showAllStock,
+		"next":          next,
+		"last":          last,
+		"program":       program,
+		"calendar":      calendar,
+		"allWaterNames": allWaterNames,
+	})
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
+		return
 	}
 }
 

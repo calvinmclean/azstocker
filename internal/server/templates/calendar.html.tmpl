@@ -1,0 +1,111 @@
+{{ define "header" }}
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stocker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/css/uikit.min.css" />
+</head>
+
+<style>
+	tr.htmx-swapping td {
+		opacity: 0;
+		transition: opacity 1s ease-out;
+	}
+</style>
+
+<body>
+{{ end }}
+
+{{ define "footer" }}
+</body>
+
+</html>
+{{ end }}
+
+{{ define "calendar" }}
+{{ template "header" . }}
+{{ $last := .last }}
+{{ $next := .next }}
+{{ $showAll := .showAll }}
+{{ $showAllStock := .showAllStock }}
+
+{{/* default to showing all stock dates if nothing is requested */}}
+{{ $showDefault := and (not $last) (not $next) (not $showAllStock) (not $showAll) }}
+{{ if $showDefault }}
+{{ $showAllStock = true }}
+{{ $last = true }}
+{{ $next = true }}
+{{ end }}
+
+<div uk-grid>
+    <div>
+        <div class="uk-card uk-card-default" style="margin: 5%;">
+            <div class="uk-card-body">
+            <form class="uk-form-stacked" action="/{{ .program }}" method="get">
+                <div class="uk-margin">
+                    <div class="uk-form-controls">
+                        <select onchange="this.form.submit()" class="uk-select" name="waters">
+                            <option>Choose a water</option>
+                            {{ range $waterName := .allWaterNames }}
+                            <option>{{ $waterName }}</option>
+                            {{ end }}
+                        </select>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    {{ range $waterName, $data := .calendar }}
+    <div>
+        <div class="uk-card uk-card-default" style="margin: 5%;">
+            <div class="uk-card-header uk-text-center">
+                <h3 class="uk-card-title uk-margin-remove-bottom">{{ $waterName }}</h3>
+            </div>
+            <div class="uk-card-body">
+                <dl class="uk-description-list">
+                    {{ if $last }}
+                    <dt>Most recent stocking</dt>
+                    {{ $lastStock := $data.Last }}
+                    <dd>{{ $lastStock.Year }} {{ $lastStock.Month.String }} {{ $lastStock.Day }}: {{ $lastStock.Stock }}</dd>
+                    {{ end }}
+                    {{ if $next }}
+                    <dt>Upcoming stocking</dt>
+                    {{ $nextStock := $data.Next }}
+                    <dd>{{ $nextStock.Year }} {{ $nextStock.Month.String }} {{ $nextStock.Day }}: {{ $nextStock.Stock }}</dd>
+                    {{ end }}
+
+                    {{ if or $showAll $showAllStock }}
+                    <dt>All Stocking Data</dt>
+                    <dd>
+                        <table class="uk-table uk-table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{ range $week := $data }}
+                                <tr>
+                                    {{ if or $showAll (ne $week.Stock "") }}
+                                    <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
+                                    <td>{{ $week.Stock }}</td>
+                                    {{ end }}
+                                </tr>
+                            {{ end }}
+                            </tbody>
+                        </table>
+                    </dd>
+                    {{ end }}
+                </dl>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ template "footer" . }}
+{{ end }}
