@@ -225,10 +225,10 @@ func (s StockingData) SortLast() {
 		c1Next := c1.Last()
 		c2Next := c2.Last()
 		if c1Next.Year == 0 {
-			return -1
+			return 1
 		}
 		if c2Next.Year == 0 {
-			return 1
+			return -1
 		}
 		return c2Next.Time().Compare(c1Next.Time())
 	})
