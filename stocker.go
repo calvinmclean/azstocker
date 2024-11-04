@@ -103,7 +103,10 @@ func (s Week) String() string {
 }
 
 // Calendar is and ordered list of Weeks and shows all available stocking data for a specific water
-type Calendar []Week
+type Calendar struct {
+	WaterName string
+	Data      []Week
+}
 
 // String formats the Calendar and excludes non-stocked dates
 func (s Calendar) String() string {
@@ -113,7 +116,7 @@ func (s Calendar) String() string {
 // Format all dates in the Calendar. If hideEmpty is set, it will exclude non-stocking days
 func (s Calendar) Format(hideEmpty bool) string {
 	var sb strings.Builder
-	for _, data := range s {
+	for _, data := range s.Data {
 		if hideEmpty && data.Stock == NoneFish {
 			continue
 		}
@@ -158,7 +161,7 @@ func (s Calendar) DetailFormat(showAll, showAllStock, next, last bool) string {
 func (s Calendar) Next() Week {
 	now := getNow().In(azTime)
 
-	for _, data := range s {
+	for _, data := range s.Data {
 		if data.Stock == NoneFish {
 			continue
 		}
@@ -174,7 +177,7 @@ func (s Calendar) Next() Week {
 func (s Calendar) Last() Week {
 	now := getNow().In(azTime)
 
-	for _, data := range slices.Backward(s) {
+	for _, data := range slices.Backward(s.Data) {
 		if data.Stock == NoneFish {
 			continue
 		}
@@ -184,6 +187,30 @@ func (s Calendar) Last() Week {
 	}
 
 	return Week{}
+}
+
+// SortableStockingData is stocking data as a slice so it can be oredered. Each item is a map of the
+// water name to the Calendar
+type SortableStockingData []Calendar
+
+// Sortable creates SortableStockingData from regular stocking data map
+func Sortable(data map[string]Calendar) SortableStockingData {
+	sortableData := []Calendar{}
+	for _, cal := range data {
+		sortableData = append(sortableData, cal)
+	}
+	return sortableData
+}
+
+// Sort allows sorting the data by a compare function and will sort alphabetically if compare is equal
+func (s SortableStockingData) Sort(compare func(Calendar, Calendar) int) {
+	slices.SortFunc(s, func(a, b Calendar) int {
+		comp := compare(a, b)
+		if comp == 0 {
+			comp = strings.Compare(a.WaterName, b.WaterName)
+		}
+		return comp
+	})
 }
 
 type sheet struct {
@@ -278,12 +305,14 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 			continue
 		}
 
-		result[waterName], err = s.getDataFromRow(row[1:], stockingCalendar)
+		data, err := s.getDataFromRow(row[1:], stockingCalendar)
 		if err != nil {
 			// TODO: This is not best practice...
 			log.Printf("error getting data for row %q: %v", waterName, err)
 			continue
 		}
+		data.WaterName = waterName
+		result[waterName] = data
 	}
 
 	return result, allWaterNames, nil
@@ -298,11 +327,11 @@ func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, 
 		skippedRows = 1
 	}
 	// empty trailing cols are trimmed, so we append until we have the correct number of cols
-	for len(row)-skippedRows < len(stockingCalendar) {
+	for len(row)-skippedRows < len(stockingCalendar.Data) {
 		row = append(row, "")
 	}
-	if len(stockingCalendar) != len(row)-skippedRows {
-		return nil, fmt.Errorf("dates and stock rows don't match: %d != %d\n", len(stockingCalendar), len(row))
+	if len(stockingCalendar.Data) != len(row)-skippedRows {
+		return Calendar{}, fmt.Errorf("dates and stock rows don't match: %d != %d\n", len(stockingCalendar.Data), len(row))
 	}
 
 	result := Calendar{}
@@ -313,10 +342,10 @@ func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, 
 			continue
 		}
 
-		dateItem := stockingCalendar[i-skippedRows]
+		dateItem := stockingCalendar.Data[i-skippedRows]
 		dateItem.Stock = ParseFish(cellAsString(stock))
 
-		result = append(result, dateItem)
+		result.Data = append(result.Data, dateItem)
 	}
 	return result, nil
 }
@@ -326,11 +355,11 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.dateRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
 	if err != nil {
-		return nil, fmt.Errorf("error getting data from sheet: %w", err)
+		return Calendar{}, fmt.Errorf("error getting data from sheet: %w", err)
 	}
 
 	if len(resp.Values) != 2 {
-		return nil, fmt.Errorf("expected 2 rows but got %d", len(resp.Values))
+		return Calendar{}, fmt.Errorf("expected 2 rows but got %d", len(resp.Values))
 	}
 
 	monthCells := resp.Values[0]
@@ -366,7 +395,7 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 		}
 		prevDay = day
 
-		result = append(result, Week{
+		result.Data = append(result.Data, Week{
 			Year:  year,
 			Month: months[monthIndex],
 			Day:   day,

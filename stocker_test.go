@@ -36,173 +36,176 @@ func TestGet(t *testing.T) {
 			[]string{"LOWER SALT RIVER"},
 			map[string]stocker.Calendar{
 				"LOWER SALT RIVER": {
-					// October
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   1,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   7,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   14,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   21,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   28,
-						Stock: stocker.Trout,
-					},
-					// November
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   4,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   11,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   18,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   25,
-						Stock: stocker.Trout,
-					},
-					// December
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   2,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   9,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   16,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   23,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   30,
-						Stock: stocker.NoneFish,
-					},
-					// January
-					{
-						Year:  2025,
-						Month: time.January,
-						Day:   6,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.January,
-						Day:   13,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.January,
-						Day:   20,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.January,
-						Day:   27,
-						Stock: stocker.Trout,
-					},
-					// February
-					{
-						Year:  2025,
-						Month: time.February,
-						Day:   3,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.February,
-						Day:   10,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.February,
-						Day:   17,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.February,
-						Day:   24,
-						Stock: stocker.Trout,
-					},
-					// March
-					{
-						Year:  2025,
-						Month: time.March,
-						Day:   3,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.March,
-						Day:   10,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.March,
-						Day:   17,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.March,
-						Day:   24,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2025,
-						Month: time.March,
-						Day:   31,
-						Stock: stocker.NoneFish,
+					WaterName: "LOWER SALT RIVER",
+					Data: []stocker.Week{
+						// October
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   1,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   7,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   14,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   21,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   28,
+							Stock: stocker.Trout,
+						},
+						// November
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   4,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   11,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   18,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   25,
+							Stock: stocker.Trout,
+						},
+						// December
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   2,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   9,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   16,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   23,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   30,
+							Stock: stocker.NoneFish,
+						},
+						// January
+						{
+							Year:  2025,
+							Month: time.January,
+							Day:   6,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.January,
+							Day:   13,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.January,
+							Day:   20,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.January,
+							Day:   27,
+							Stock: stocker.Trout,
+						},
+						// February
+						{
+							Year:  2025,
+							Month: time.February,
+							Day:   3,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.February,
+							Day:   10,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.February,
+							Day:   17,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.February,
+							Day:   24,
+							Stock: stocker.Trout,
+						},
+						// March
+						{
+							Year:  2025,
+							Month: time.March,
+							Day:   3,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.March,
+							Day:   10,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.March,
+							Day:   17,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.March,
+							Day:   24,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2025,
+							Month: time.March,
+							Day:   31,
+							Stock: stocker.NoneFish,
+						},
 					},
 				},
 			},
@@ -214,86 +217,89 @@ func TestGet(t *testing.T) {
 			[]string{"Queen Creek - Mansel Carter Oasis Lake"},
 			map[string]stocker.Calendar{
 				"Queen Creek - Mansel Carter Oasis Lake": {
-					// October
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   7,
-						Stock: stocker.Catfish,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   14,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   21,
-						Stock: stocker.Catfish,
-					},
-					{
-						Year:  2024,
-						Month: time.October,
-						Day:   28,
-						Stock: stocker.NoneFish,
-					},
-					// November
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   4,
-						Stock: stocker.Catfish,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   11,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   18,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.November,
-						Day:   25,
-						Stock: stocker.NoneFish,
-					},
-					// December
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   2,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   9,
-						Stock: stocker.Trout,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   16,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   23,
-						Stock: stocker.NoneFish,
-					},
-					{
-						Year:  2024,
-						Month: time.December,
-						Day:   30,
-						Stock: stocker.Trout,
+					WaterName: "Queen Creek - Mansel Carter Oasis Lake",
+					Data: []stocker.Week{
+						// October
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   7,
+							Stock: stocker.Catfish,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   14,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   21,
+							Stock: stocker.Catfish,
+						},
+						{
+							Year:  2024,
+							Month: time.October,
+							Day:   28,
+							Stock: stocker.NoneFish,
+						},
+						// November
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   4,
+							Stock: stocker.Catfish,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   11,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   18,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.November,
+							Day:   25,
+							Stock: stocker.NoneFish,
+						},
+						// December
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   2,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   9,
+							Stock: stocker.Trout,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   16,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   23,
+							Stock: stocker.NoneFish,
+						},
+						{
+							Year:  2024,
+							Month: time.December,
+							Day:   30,
+							Stock: stocker.Trout,
+						},
 					},
 				},
 			},

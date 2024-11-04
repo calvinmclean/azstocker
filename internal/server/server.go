@@ -67,17 +67,46 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	q := query{r}
 	showAll := q.Bool("showAll")
-	showAllStock := q.Bool("showAllStock")
-	next := q.Bool("next")
-	last := q.Bool("last")
+	sortBy := r.URL.Query().Get("sortBy")
 
-	calendar, allWaterNames, err := stocker.Get(s.srv, program, waters)
+	stockingData, allWaterNames, err := stocker.Get(s.srv, program, waters)
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to get data", "err", err.Error())
 		return
 	}
 
 	slices.Sort(allWaterNames)
+
+	sortableData := stocker.Sortable(stockingData)
+	switch sortBy {
+	case "next":
+		sortableData.Sort(func(c1, c2 stocker.Calendar) int {
+			c1Next := c1.Next()
+			c2Next := c2.Next()
+			if c1Next.Year == 0 {
+				return 1
+			}
+			if c2Next.Year == 0 {
+				return -1
+			}
+			return c1Next.Time().Compare(c2Next.Time())
+		})
+	case "last":
+		sortableData.Sort(func(c1, c2 stocker.Calendar) int {
+			// sort reverse since we are looking for largest time first
+			c1Next := c1.Last()
+			c2Next := c2.Last()
+			if c1Next.Year == 0 {
+				return -1
+			}
+			if c2Next.Year == 0 {
+				return 1
+			}
+			return c2Next.Time().Compare(c1Next.Time())
+		})
+	case "":
+		sortableData.Sort(func(c1, c2 stocker.Calendar) int { return 0 })
+	}
 
 	tmpl, err := loadTemplates()
 	if err != nil {
@@ -88,13 +117,11 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	watersStr := strings.Join(waters, ", ")
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
 		"showAll":       showAll,
-		"showAllStock":  showAllStock,
-		"next":          next,
-		"last":          last,
 		"program":       program,
-		"calendar":      calendar,
+		"calendar":      sortableData,
 		"allWaterNames": allWaterNames,
 		"waters":        watersStr,
+		"sortedBy":      sortBy,
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
