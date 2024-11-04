@@ -94,12 +94,12 @@
                             </thead>
                             <tbody>
                             {{ range $week := $data.Data }}
+                                {{ if or $showAll (ne $week.Stock "None") }}
                                 <tr>
-                                    {{ if or $showAll (ne $week.Stock "None") }}
                                     <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
                                     <td>{{ $week.Stock }}</td>
-                                    {{ end }}
                                 </tr>
+                                {{ end }}
                             {{ end }}
                             </tbody>
                         </table>
