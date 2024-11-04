@@ -189,27 +189,48 @@ func (s Calendar) Last() Week {
 	return Week{}
 }
 
-// SortableStockingData is stocking data as a slice so it can be oredered. Each item is a map of the
-// water name to the Calendar
-type SortableStockingData []Calendar
-
-// Sortable creates SortableStockingData from regular stocking data map
-func Sortable(data map[string]Calendar) SortableStockingData {
-	sortableData := []Calendar{}
-	for _, cal := range data {
-		sortableData = append(sortableData, cal)
-	}
-	return sortableData
-}
+// StockingData is a slice of stocking Calendars for different waters
+type StockingData []Calendar
 
 // Sort allows sorting the data by a compare function and will sort alphabetically if compare is equal
-func (s SortableStockingData) Sort(compare func(Calendar, Calendar) int) {
+func (s StockingData) Sort(compare func(Calendar, Calendar) int) {
 	slices.SortFunc(s, func(a, b Calendar) int {
 		comp := compare(a, b)
 		if comp == 0 {
 			comp = strings.Compare(a.WaterName, b.WaterName)
 		}
 		return comp
+	})
+}
+
+// SortNext sorts by closest upcoming stocking dates
+func (s StockingData) SortNext() {
+	s.Sort(func(c1, c2 Calendar) int {
+		c1Next := c1.Next()
+		c2Next := c2.Next()
+		if c1Next.Year == 0 {
+			return 1
+		}
+		if c2Next.Year == 0 {
+			return -1
+		}
+		return c1Next.Time().Compare(c2Next.Time())
+	})
+}
+
+// SortLast sorts by most-recently stocked waters
+func (s StockingData) SortLast() {
+	// sort reverse since we are looking for largest time first
+	s.Sort(func(c1, c2 Calendar) int {
+		c1Next := c1.Last()
+		c2Next := c2.Last()
+		if c1Next.Year == 0 {
+			return -1
+		}
+		if c2Next.Year == 0 {
+			return 1
+		}
+		return c2Next.Time().Compare(c1Next.Time())
 	})
 }
 
@@ -262,7 +283,7 @@ func newSheet(srv *sheets.Service, program Program) *sheet {
 	}
 }
 
-func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, []string, error) {
+func (s *sheet) getDataForWaters(waterNames []string) (StockingData, []string, error) {
 	lowerCaseWaterNames := []string{}
 	for _, w := range waterNames {
 		lowerCaseWaterNames = append(lowerCaseWaterNames, strings.ToLower(w))
@@ -282,7 +303,7 @@ func (s *sheet) getDataForWaters(waterNames []string) (map[string]Calendar, []st
 
 // getStockingData parses a sheet to populate the provided Calendar dates with stocking data for specified waters.
 // Also returns a list of all water names in the sheet
-func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (map[string]Calendar, []string, error) {
+func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (StockingData, []string, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.scheduleRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
 	if err != nil {
@@ -290,7 +311,7 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 	}
 
 	allWaterNames := []string{}
-	result := map[string]Calendar{}
+	result := []Calendar{}
 	for _, row := range resp.Values {
 		if len(row) < 2 {
 			continue
@@ -312,7 +333,7 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 			continue
 		}
 		data.WaterName = waterName
-		result[waterName] = data
+		result = append(result, data)
 	}
 
 	return result, allWaterNames, nil
@@ -428,9 +449,8 @@ func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 }
 
 // Get will parse the Google Sheet for the specified Program. If waters are provided, it will only return data
-// for these waters. Otherwise, it provides for all. This returns a map of water name to the Calendar data. It
-// also returns a list of all waters in the Sheet
-func Get(srv *sheets.Service, program Program, waters []string) (map[string]Calendar, []string, error) {
+// for these waters. Otherwise, it provides for all. It also returns a list of all waters in the Sheet
+func Get(srv *sheets.Service, program Program, waters []string) (StockingData, []string, error) {
 	sheet := newSheet(srv, program)
 	if sheet == nil {
 		return nil, nil, fmt.Errorf("unable to initialize sheet for program %q", program)
@@ -441,60 +461,6 @@ func Get(srv *sheets.Service, program Program, waters []string) (map[string]Cale
 		return nil, nil, err
 	}
 	return stockData, allWaterNames, nil
-}
-
-// SortNext returns a slice of waters and their closest upcoming stocking, sorted by time
-func SortNext(data map[string]Calendar) []map[string]Week {
-	return sortNextOrRecent(data, true)
-}
-
-// SortLast returns a slice of waters and their most recent stocking, sorted by time
-func SortLast(data map[string]Calendar) []map[string]Week {
-	return sortNextOrRecent(data, false)
-}
-
-// sortNextOrRecent loops through the provided data to get the closest recent or upcoming stocking
-// and then sorts by this time
-func sortNextOrRecent(data map[string]Calendar, next bool) []map[string]Week {
-	result := []map[string]Week{}
-	for waterName, calendar := range data {
-		getWeek := calendar.Last
-		if next {
-			getWeek = calendar.Next
-		}
-
-		week := getWeek()
-		if week.Year == 0 {
-			continue
-		}
-
-		result = append(result, map[string]Week{waterName: week})
-	}
-
-	// Sort by stocking time or alphabetically if the time is the same
-	slices.SortFunc(result, func(a map[string]Week, b map[string]Week) int {
-		var aKey, bKey string
-		for waterName := range a {
-			aKey = waterName
-		}
-		for waterName := range b {
-			bKey = waterName
-		}
-
-		comp := 0
-		if next {
-			comp = a[aKey].Time().Compare(b[bKey].Time())
-		} else {
-			comp = b[bKey].Time().Compare(a[aKey].Time())
-		}
-
-		if comp == 0 {
-			comp = strings.Compare(aKey, bKey)
-		}
-		return comp
-	})
-
-	return result
 }
 
 func isNewYear(months []time.Month, i int) bool {

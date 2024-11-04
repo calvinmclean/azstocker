@@ -27,15 +27,15 @@ func TestGet(t *testing.T) {
 		fixture  string
 		program  stocker.Program
 		waters   []string
-		expected map[string]stocker.Calendar
+		expected stocker.StockingData
 	}{
 		{
 			"Winter_SaltRiver",
 			winterFixture,
 			stocker.WinterProgram,
 			[]string{"LOWER SALT RIVER"},
-			map[string]stocker.Calendar{
-				"LOWER SALT RIVER": {
+			[]stocker.Calendar{
+				{
 					WaterName: "LOWER SALT RIVER",
 					Data: []stocker.Week{
 						// October
@@ -215,8 +215,8 @@ func TestGet(t *testing.T) {
 			cfpFixture,
 			stocker.CFProgram,
 			[]string{"Queen Creek - Mansel Carter Oasis Lake"},
-			map[string]stocker.Calendar{
-				"Queen Creek - Mansel Carter Oasis Lake": {
+			[]stocker.Calendar{
+				{
 					WaterName: "Queen Creek - Mansel Carter Oasis Lake",
 					Data: []stocker.Week{
 						// October

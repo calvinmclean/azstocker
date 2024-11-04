@@ -77,35 +77,13 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	slices.Sort(allWaterNames)
 
-	sortableData := stocker.Sortable(stockingData)
 	switch sortBy {
 	case "next":
-		sortableData.Sort(func(c1, c2 stocker.Calendar) int {
-			c1Next := c1.Next()
-			c2Next := c2.Next()
-			if c1Next.Year == 0 {
-				return 1
-			}
-			if c2Next.Year == 0 {
-				return -1
-			}
-			return c1Next.Time().Compare(c2Next.Time())
-		})
+		stockingData.SortNext()
 	case "last":
-		sortableData.Sort(func(c1, c2 stocker.Calendar) int {
-			// sort reverse since we are looking for largest time first
-			c1Next := c1.Last()
-			c2Next := c2.Last()
-			if c1Next.Year == 0 {
-				return -1
-			}
-			if c2Next.Year == 0 {
-				return 1
-			}
-			return c2Next.Time().Compare(c1Next.Time())
-		})
+		stockingData.SortLast()
 	case "":
-		sortableData.Sort(func(c1, c2 stocker.Calendar) int { return 0 })
+		stockingData.Sort(func(c1, c2 stocker.Calendar) int { return 0 })
 	}
 
 	tmpl, err := loadTemplates()
@@ -118,7 +96,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
 		"showAll":       showAll,
 		"program":       program,
-		"calendar":      sortableData,
+		"calendar":      stockingData,
 		"allWaterNames": allWaterNames,
 		"waters":        watersStr,
 		"sortedBy":      sortBy,
