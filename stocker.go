@@ -44,7 +44,7 @@ const (
 	NoneFish    Fish = "None"
 )
 
-var azTime = time.FixedZone("AZ", -7)
+var azTime = time.FixedZone("AZ", -7*3600)
 
 // Fish is the type of fish that is stocked
 type Fish string
