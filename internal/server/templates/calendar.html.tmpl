@@ -118,14 +118,14 @@
         {{ range $data := .calendar }}
         <div id="waterCard">
             <div class="uk-card uk-card-default" style="margin: 5%;">
-                {{ if not $waters }}
                 <div class="uk-card-header uk-text-center">
                     <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}&showAll=true">
-                    <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
-                        {{ $data.WaterName }}
-                    </h3>
+                        <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
+                            {{ $data.WaterName }}
+                        </h3>
                     </a>
 
+                    {{ if not $waters }}
                     <div uk-tooltip="title: Add to favorites" class="uk-position-top-left uk-margin-small-top uk-margin-small-left">
                         <a uk-icon="icon: heart"
                             _="on click
@@ -137,8 +137,8 @@
                                 end">
                         </a>
                     </div>
+                    {{ end }}
                 </div>
-                {{ end }}
                 <div class="uk-card-body">
                     <dl class="uk-description-list">
                         <dt>Most recent stocking</dt>
