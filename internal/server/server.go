@@ -8,7 +8,6 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-	"slices"
 	"strings"
 
 	"github.com/calvinmclean/stocker"
@@ -69,13 +68,11 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	showAll := q.Bool("showAll")
 	sortBy := r.URL.Query().Get("sortBy")
 
-	stockingData, allWaterNames, err := stocker.Get(s.srv, program, waters)
+	stockingData, err := stocker.Get(s.srv, program, waters)
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to get data", "err", err.Error())
 		return
 	}
-
-	slices.Sort(allWaterNames)
 
 	switch sortBy {
 	case "next":
@@ -94,12 +91,11 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	watersStr := strings.Join(waters, ", ")
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
-		"showAll":       showAll,
-		"program":       program,
-		"calendar":      stockingData,
-		"allWaterNames": allWaterNames,
-		"waters":        watersStr,
-		"sortedBy":      sortBy,
+		"showAll":  showAll,
+		"program":  program,
+		"calendar": stockingData,
+		"waters":   watersStr,
+		"sortedBy": sortBy,
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())

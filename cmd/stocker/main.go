@@ -85,7 +85,7 @@ func main() {
 						return fmt.Errorf("error creating Sheets service: %w", err)
 					}
 
-					stockData, _, err := stocker.Get(srv, program, waters)
+					stockData, err := stocker.Get(srv, program, waters)
 					if err != nil {
 						return fmt.Errorf("error getting stocking data: %w", err)
 					}

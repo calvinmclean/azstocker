@@ -283,7 +283,7 @@ func newSheet(srv *sheets.Service, program Program) *sheet {
 	}
 }
 
-func (s *sheet) getDataForWaters(waterNames []string) (StockingData, []string, error) {
+func (s *sheet) getDataForWaters(waterNames []string) (StockingData, error) {
 	lowerCaseWaterNames := []string{}
 	for _, w := range waterNames {
 		lowerCaseWaterNames = append(lowerCaseWaterNames, strings.ToLower(w))
@@ -291,26 +291,24 @@ func (s *sheet) getDataForWaters(waterNames []string) (StockingData, []string, e
 
 	stockingCalendar, err := s.initializeCalendar()
 	if err != nil {
-		return nil, nil, fmt.Errorf("error initializing calendar: %w", err)
+		return nil, fmt.Errorf("error initializing calendar: %w", err)
 	}
 
-	data, allWaterNames, err := s.getStockingData(stockingCalendar, lowerCaseWaterNames)
+	data, err := s.getStockingData(stockingCalendar, lowerCaseWaterNames)
 	if err != nil {
-		return nil, nil, fmt.Errorf("error finding water rows: %w", err)
+		return nil, fmt.Errorf("error finding water rows: %w", err)
 	}
-	return data, allWaterNames, nil
+	return data, nil
 }
 
 // getStockingData parses a sheet to populate the provided Calendar dates with stocking data for specified waters.
-// Also returns a list of all water names in the sheet
-func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (StockingData, []string, error) {
+func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (StockingData, error) {
 	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.scheduleRange)
 	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
 	if err != nil {
-		return nil, nil, fmt.Errorf("error getting data from sheet: %w", err)
+		return nil, fmt.Errorf("error getting data from sheet: %w", err)
 	}
 
-	allWaterNames := []string{}
 	result := []Calendar{}
 	for _, row := range resp.Values {
 		if len(row) < 2 {
@@ -321,7 +319,6 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 		if waterName == "" {
 			continue
 		}
-		allWaterNames = append(allWaterNames, waterName)
 		if len(waterNames) > 0 && !slices.Contains(waterNames, strings.ToLower(waterName)) {
 			continue
 		}
@@ -336,7 +333,7 @@ func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) 
 		result = append(result, data)
 	}
 
-	return result, allWaterNames, nil
+	return result, nil
 }
 
 // getDataFromRow parses a row and adds stocking data to the provided Calendar dates
@@ -449,18 +446,18 @@ func NewService(apiKey string, rt http.RoundTripper) (*sheets.Service, error) {
 }
 
 // Get will parse the Google Sheet for the specified Program. If waters are provided, it will only return data
-// for these waters. Otherwise, it provides for all. It also returns a list of all waters in the Sheet
-func Get(srv *sheets.Service, program Program, waters []string) (StockingData, []string, error) {
+// for these waters. Otherwise, it provides for all
+func Get(srv *sheets.Service, program Program, waters []string) (StockingData, error) {
 	sheet := newSheet(srv, program)
 	if sheet == nil {
-		return nil, nil, fmt.Errorf("unable to initialize sheet for program %q", program)
+		return nil, fmt.Errorf("unable to initialize sheet for program %q", program)
 	}
 
-	stockData, allWaterNames, err := sheet.getDataForWaters(waters)
+	stockData, err := sheet.getDataForWaters(waters)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	return stockData, allWaterNames, nil
+	return stockData, nil
 }
 
 func isNewYear(months []time.Month, i int) bool {

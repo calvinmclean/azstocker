@@ -313,7 +313,7 @@ func TestGet(t *testing.T) {
 				assert.NoError(t, r.Stop())
 			}()
 
-			stockData, _, err := stocker.Get(srv, tt.program, tt.waters)
+			stockData, err := stocker.Get(srv, tt.program, tt.waters)
 			assert.NoError(t, err)
 			assert.Equal(t, tt.expected, stockData)
 		})
@@ -335,11 +335,11 @@ func TestGetHTTPCache(t *testing.T) {
 		assert.NoError(t, r.Stop())
 	}()
 
-	_, _, err := stocker.Get(srv, stocker.WinterProgram, []string{})
+	_, err := stocker.Get(srv, stocker.WinterProgram, []string{})
 	assert.NoError(t, err)
 	assert.Equal(t, 2, numRequests)
 
-	_, _, err = stocker.Get(srv, stocker.WinterProgram, []string{})
+	_, err = stocker.Get(srv, stocker.WinterProgram, []string{})
 	assert.NoError(t, err)
 	assert.Equal(t, 2, numRequests, "no new requests should be created for the 2nd request")
 }

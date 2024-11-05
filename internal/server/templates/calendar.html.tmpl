@@ -1,48 +1,46 @@
 {{ define "calendar" }}
 {{ template "header" . }}
 {{ $showAll := .showAll }}
+{{ $program := .program }}
+{{ $waters := .waters }}
 
 <div class="uk-margin-top">
     <h1 class="uk-heading-medium uk-text-center">Stocker</h1>
 
     {{ $programName := "" }}
-    {{ if eq .program "cfp" }}
+    {{ if eq $program "cfp" }}
     {{ $programName = "Community Fishing Program" }}
-    {{ else if eq .program "winter" }}
+    {{ else if eq $program "winter" }}
     {{ $programName = "Winter" }}
-    {{ else if eq .program "springsummer" }}
+    {{ else if eq $program "springsummer" }}
     {{ $programName = "Spring & Summer" }}
     {{ end }}
     <nav class="uk-text-center">
         <ul class="uk-breadcrumb">
             <li><a href="/">Home</a></li>
-            {{ if .waters }}
-            <li><a href="/{{ .program }}">{{ $programName }}</a></li>
-            <li>{{ .waters }}</li>
+            {{ if $waters }}
+            <li><a href="/{{ $program }}">{{ $programName }}</a></li>
+            <li>{{ $waters }}</li>
             {{ else }}
             <li>{{ $programName }}</li>
             {{ end }}
         </ul>
     </nav>
 
+    {{ if not $waters }}
     <div>
         <div class="uk-card uk-card-default" style="margin: 5%;">
             <div class="uk-card-body">
-                <div class="uk-margin">
-                    <form class="uk-form-stacked" action="/{{ .program }}" method="get">
-                        <div class="uk-form-controls">
-                            <select onchange="this.form.submit()" class="uk-select" name="waters">
-                                <option>Choose a water</option>
-                                {{ range $waterName := .allWaterNames }}
-                                <option>{{ $waterName }}</option>
-                                {{ end }}
-                            </select>
-                        </div>
-                    </form>
+                <div>
+                    <div><input class="uk-input" placeholder="Search" _="on input
+                    show <div#waterCard>div/> in #water-cards
+                      when its textContent.toLowerCase() contains my value.toLowerCase()
+                    "/></div>
                 </div>
 
+
                 <div class="uk-margin uk-flex-center uk-grid" uk-grid>
-                    <form action="/{{ .program }}" method="get">
+                    <form action="/{{ $program }}" method="get">
                         {{ if eq .sortedBy "last" }}
                         <button class="uk-button uk-button-primary uk-button-large">
                         {{ else }}
@@ -53,7 +51,7 @@
                         </button>
                     </form>
 
-                    <form action="/{{ .program }}" method="get">
+                    <form action="/{{ $program }}" method="get">
                         {{ if eq .sortedBy "next" }}
                         <button class="uk-button uk-button-primary uk-button-large">
                         {{ else }}
@@ -67,48 +65,56 @@
             </div>
         </div>
     </div>
-    {{ range $data := .calendar }}
-    <div>
-        <div class="uk-card uk-card-default" style="margin: 5%;">
-            <div class="uk-card-header uk-text-center">
-                <h3 class="uk-card-title uk-margin-remove-bottom">{{ $data.WaterName }}</h3>
-            </div>
-            <div class="uk-card-body">
-                <dl class="uk-description-list">
-                    <dt>Most recent stocking</dt>
-                    {{ $lastStock := $data.Last }}
-                    <dd>{{ $lastStock.Year }} {{ $lastStock.Month.String }} {{ $lastStock.Day }}: {{ $lastStock.Stock }}</dd>
+    {{ end }}
 
-                    <dt>Upcoming stocking</dt>
-                    {{ $nextStock := $data.Next }}
-                    <dd>{{ $nextStock.Year }} {{ $nextStock.Month.String }} {{ $nextStock.Day }}: {{ $nextStock.Stock }}</dd>
+    <div id="water-cards">
+        {{ range $data := .calendar }}
+        <div id="waterCard">
+            <div class="uk-card uk-card-default" style="margin: 5%;">
+                <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}">
+                    <div class="uk-card-header uk-text-center">
+                        <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
+                            {{ $data.WaterName }}
+                        </h3>
+                    </div>
+                </a>
+                <div class="uk-card-body">
+                    <dl class="uk-description-list">
+                        <dt>Most recent stocking</dt>
+                        {{ $lastStock := $data.Last }}
+                        <dd>{{ $lastStock.Year }} {{ $lastStock.Month.String }} {{ $lastStock.Day }}: {{ $lastStock.Stock }}</dd>
 
-                    <dt>All Stocking Data</dt>
-                    <dd>
-                        <table class="uk-table uk-table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Stock</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {{ range $week := $data.Data }}
-                                {{ if or $showAll (ne $week.Stock "None") }}
-                                <tr>
-                                    <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
-                                    <td>{{ $week.Stock }}</td>
-                                </tr>
+                        <dt>Upcoming stocking</dt>
+                        {{ $nextStock := $data.Next }}
+                        <dd>{{ $nextStock.Year }} {{ $nextStock.Month.String }} {{ $nextStock.Day }}: {{ $nextStock.Stock }}</dd>
+
+                        <dt>All Stocking Data</dt>
+                        <dd>
+                            <table class="uk-table uk-table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Stock</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {{ range $week := $data.Data }}
+                                    {{ if or ($waters) (or $showAll (ne $week.Stock "None")) }}
+                                    <tr>
+                                        <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
+                                        <td>{{ $week.Stock }}</td>
+                                    </tr>
+                                    {{ end }}
                                 {{ end }}
-                            {{ end }}
-                            </tbody>
-                        </table>
-                    </dd>
-                </dl>
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </div>
             </div>
         </div>
+        {{ end }}
     </div>
-    {{ end }}
 </div>
 {{ template "footer" . }}
 {{ end }}

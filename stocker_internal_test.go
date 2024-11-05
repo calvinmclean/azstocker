@@ -53,7 +53,7 @@ func TestSortNext(t *testing.T) {
 		assert.NoError(t, r.Stop())
 	}()
 
-	stockData, _, err := Get(srv, CFProgram, []string{
+	stockData, err := Get(srv, CFProgram, []string{
 		"Tempe - Kiwanis Lake",
 		"Tempe - Tempe Town Lake",
 		"Payson - Green Valley Lakes",
@@ -130,7 +130,7 @@ func TestSortLast(t *testing.T) {
 		assert.NoError(t, r.Stop())
 	}()
 
-	stockData, _, err := Get(srv, CFProgram, []string{
+	stockData, err := Get(srv, CFProgram, []string{
 		"St. Johns - Patterson Ponds",
 		"Phoenix - Roadrunner Pond",
 		"Buckeye - Sundance Park Lake",
@@ -207,7 +207,7 @@ func TestNextLast(t *testing.T) {
 		assert.NoError(t, r.Stop())
 	}()
 
-	stockData, _, err := Get(srv, CFProgram, []string{"Queen Creek - Mansel Carter Oasis Lake"})
+	stockData, err := Get(srv, CFProgram, []string{"Queen Creek - Mansel Carter Oasis Lake"})
 	assert.NoError(t, err)
 
 	getNow = func() time.Time {
