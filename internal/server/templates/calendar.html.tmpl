@@ -3,6 +3,7 @@
 {{ $showAll := .showAll }}
 {{ $program := .program }}
 {{ $waters := .waters }}
+{{ $numWaters := .numWaters }}
 
 <script type="text/hyperscript">
     init
@@ -61,7 +62,7 @@
         </ul>
     </nav>
 
-    {{ if not $waters }}
+    {{ if or (not $waters) (gt $numWaters 1) }}
     <div>
         <div class="uk-card uk-card-default" style="margin: 5%;">
             <div class="uk-card-body">
@@ -75,19 +76,25 @@
                 <form class="uk-form-horizontal" action="/{{ $program }}" method="get">
                     <div class="uk-margin uk-grid" uk-grid>
                         <div id="showSelected">
-                        <span class="uk-badge uk-margin-right">Favorites</span>
+                        <span style="visibility: hidden;" class="uk-badge uk-margin-right">Favorites</span>
                         </div>
                     </div>
                 </form>
 
                 <div class="uk-margin uk-flex-center uk-grid" uk-grid>
+                    {{ if not $waters }}
                     <form action="/{{ $program }}" method="get">
-                        <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary" value="" name="waters" id="selectionsButton"
+                        <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary uk-button-large" value="" name="waters" id="selectionsButton"
                         _='on click set my value to watersQuery()' disabled>
                             Show Favorites Only
                         </button>
                     </form>
+                    {{ end }}
+
                     <form action="/{{ $program }}" method="get">
+                        {{ if $waters }}
+                        <input type="hidden" name="waters" value="{{ $waters }}">
+                        {{ end }}
                         {{ if eq .sortedBy "last" }}
                         <button class="uk-button uk-button-primary uk-button-large">
                         {{ else }}
@@ -99,6 +106,9 @@
                     </form>
 
                     <form action="/{{ $program }}" method="get">
+                        {{ if $waters }}
+                        <input type="hidden" name="waters" value="{{ $waters }}">
+                        {{ end }}
                         {{ if eq .sortedBy "next" }}
                         <button class="uk-button uk-button-primary uk-button-large">
                         {{ else }}

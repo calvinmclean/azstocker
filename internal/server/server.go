@@ -52,11 +52,6 @@ func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
-	var waters []string
-	if r.URL.Query().Has(watersQueryParam) {
-		waters = strings.Split(r.URL.Query().Get(watersQueryParam), ",")
-	}
-
 	programStr := r.PathValue("program")
 	program, err := stocker.ParseProgram(programStr)
 	if err != nil {
@@ -67,6 +62,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	q := query{r}
 	showAll := q.Bool("showAll")
 	sortBy := r.URL.Query().Get("sortBy")
+	waters := q.StringSlice("waters")
 
 	stockingData, err := stocker.Get(s.srv, program, waters)
 	if err != nil {
@@ -91,11 +87,12 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	watersStr := strings.Join(waters, ", ")
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
-		"showAll":  showAll,
-		"program":  program,
-		"calendar": stockingData,
-		"waters":   watersStr,
-		"sortedBy": sortBy,
+		"showAll":   showAll,
+		"program":   program,
+		"calendar":  stockingData,
+		"waters":    watersStr,
+		"numWaters": len(waters),
+		"sortedBy":  sortBy,
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
@@ -109,6 +106,19 @@ type query struct {
 
 func (q query) Bool(key string) bool {
 	return strings.ToLower(q.r.URL.Query().Get(key)) == "true"
+}
+
+func (q query) StringSlice(key string) []string {
+	result := []string{}
+	if !q.r.URL.Query().Has(watersQueryParam) {
+		return result
+	}
+
+	rawQuerySlice := strings.Split(q.r.URL.Query().Get(watersQueryParam), ",")
+	for _, w := range rawQuerySlice {
+		result = append(result, strings.TrimSpace(w))
+	}
+	return result
 }
 
 func loadTemplates() (*template.Template, error) {
