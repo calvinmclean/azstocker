@@ -73,6 +73,7 @@
                     "/></div>
                 </div>
 
+                {{ if not $waters }}
                 <form class="uk-form-horizontal" action="/{{ $program }}" method="get">
                     <div class="uk-margin uk-grid" uk-grid>
                         <div id="showSelected">
@@ -80,13 +81,14 @@
                         </div>
                     </div>
                 </form>
+                {{ end }}
 
                 <div class="uk-margin uk-flex-center uk-grid" uk-grid>
                     {{ if not $waters }}
                     <form action="/{{ $program }}" method="get">
                         <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary uk-button-large" value="" name="waters" id="selectionsButton"
                         _='on click set my value to watersQuery()' disabled>
-                            Show Favorites Only
+                            <span uk-icon="icon: heart"></span> Favorites
                         </button>
                     </form>
                     {{ end }}
@@ -101,7 +103,7 @@
                         <input type="hidden" value="last" name="sortBy">
                         <button class="uk-button uk-button-default uk-button-large">
                         {{ end }}
-                            Sort Recent Stocking
+                            <span uk-icon="icon: menu"></span> Recent
                         </button>
                     </form>
 
@@ -115,7 +117,7 @@
                         <input type="hidden" value="next" name="sortBy">
                         <button class="uk-button uk-button-default uk-button-large">
                         {{ end }}
-                            Sort Upcoming Stocking
+                            <span uk-icon="icon: menu"></span> Upcoming
                         </button>
                     </form>
                 </div>
