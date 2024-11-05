@@ -4,6 +4,40 @@
 {{ $program := .program }}
 {{ $waters := .waters }}
 
+<script type="text/hyperscript">
+    init
+        set $selections to []
+    end
+
+    def updateSelection()
+        if $selections.length == 0
+            add @disabled to #selectionsButton
+            exit
+        end
+
+        remove @disabled from #selectionsButton
+
+        set elements to ''
+        for water in $selections
+            append `<span class="uk-badge uk-margin-right">${water}</span>` to elements
+        end
+
+        get #showSelected then
+        set its innerHTML to elements
+    end
+
+    def watersQuery()
+        set queryString to ''
+        for water in $selections index i
+            if i > 0
+                append "," to queryString
+            end
+            append water to queryString
+        end
+        return queryString
+    end
+</script>
+
 <div class="uk-margin-top">
     <h1 class="uk-heading-medium uk-text-center">Stocker</h1>
 
@@ -31,15 +65,28 @@
     <div>
         <div class="uk-card uk-card-default" style="margin: 5%;">
             <div class="uk-card-body">
-                <div>
+                <div class="uk-margin">
                     <div><input class="uk-input" placeholder="Search" _="on input
                     show <div#waterCard>div/> in #water-cards
                       when its textContent.toLowerCase() contains my value.toLowerCase()
                     "/></div>
                 </div>
 
+                <form class="uk-form-horizontal" action="/{{ $program }}" method="get">
+                    <div class="uk-margin uk-grid" uk-grid>
+                        <div id="showSelected">
+                        <span class="uk-badge uk-margin-right">Favorites</span>
+                        </div>
+                    </div>
+                </form>
 
                 <div class="uk-margin uk-flex-center uk-grid" uk-grid>
+                    <form action="/{{ $program }}" method="get">
+                        <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary" value="" name="waters" id="selectionsButton"
+                        _='on click set my value to watersQuery()' disabled>
+                            Show Favorites Only
+                        </button>
+                    </form>
                     <form action="/{{ $program }}" method="get">
                         {{ if eq .sortedBy "last" }}
                         <button class="uk-button uk-button-primary uk-button-large">
@@ -71,13 +118,27 @@
         {{ range $data := .calendar }}
         <div id="waterCard">
             <div class="uk-card uk-card-default" style="margin: 5%;">
-                <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}">
-                    <div class="uk-card-header uk-text-center">
-                        <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
-                            {{ $data.WaterName }}
-                        </h3>
+                {{ if not $waters }}
+                <div class="uk-card-header uk-text-center">
+                    <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}">
+                    <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
+                        {{ $data.WaterName }}
+                    </h3>
+                    </a>
+
+                    <div uk-tooltip="title: Add to favorites" class="uk-position-top-left uk-margin-small-top uk-margin-small-left">
+                        <a uk-icon="icon: heart"
+                            _="on click
+                                if @uk-icon == 'icon: heart'
+                                    set @uk-icon to 'icon: check'
+                                    then remove @uk-tooltip from closest <div/>
+                                    then append '{{ $data.WaterName }}' to $selections
+                                    then updateSelection()
+                                end">
+                        </a>
                     </div>
-                </a>
+                </div>
+                {{ end }}
                 <div class="uk-card-body">
                     <dl class="uk-description-list">
                         <dt>Most recent stocking</dt>
@@ -99,7 +160,7 @@
                                 </thead>
                                 <tbody>
                                 {{ range $week := $data.Data }}
-                                    {{ if or ($waters) (or $showAll (ne $week.Stock "None")) }}
+                                    {{ if or (lt (len $waters) 1) (or $showAll (ne $week.Stock "None")) }}
                                     <tr>
                                         <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
                                         <td>{{ $week.Stock }}</td>
