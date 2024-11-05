@@ -120,7 +120,7 @@
             <div class="uk-card uk-card-default" style="margin: 5%;">
                 {{ if not $waters }}
                 <div class="uk-card-header uk-text-center">
-                    <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}">
+                    <a class="uk-link-toggle" href="/{{ $program }}?waters={{ $data.WaterName }}&showAll=true">
                     <h3 class="uk-link-heading uk-card-title uk-margin-remove-bottom">
                         {{ $data.WaterName }}
                     </h3>
@@ -160,7 +160,7 @@
                                 </thead>
                                 <tbody>
                                 {{ range $week := $data.Data }}
-                                    {{ if or (lt (len $waters) 1) (or $showAll (ne $week.Stock "None")) }}
+                                    {{ if or $showAll (ne $week.Stock "None") }}
                                     <tr>
                                         <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
                                         <td>{{ $week.Stock }}</td>
