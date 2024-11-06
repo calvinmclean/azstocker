@@ -5,6 +5,9 @@
 {{ $waters := .waters }}
 {{ $numWaters := .numWaters }}
 
+{{ $nextStockingLanguage := "Next stocking" }}
+{{ $lastStockedLanguage := "Last stocked" }}
+
 <script type="text/hyperscript">
     init
         set $selections to []
@@ -67,58 +70,60 @@
         <div class="uk-card uk-card-default" style="margin-right: 5%; margin-left: 5%; margin-bottom: 2%;">
             <div class="uk-card-body">
                 <div class="uk-grid" uk-grid>
-                    <div class="uk-width-1-2@s">
+                    <div class="uk-width-expand@s">
                         <input class="uk-input" placeholder="Search" _="on input
                         show <div#waterCard>div/> in #water-cards
                         when its textContent.toLowerCase() contains my value.toLowerCase()
                         "/>
                     </div>
 
-                    <div>
-                        <form action="/{{ $program }}" method="get">
-                            {{ if $waters }}
-                            <input type="hidden" name="waters" value="{{ $waters }}">
-                            {{ end }}
-                            {{ if eq .sortedBy "last" }}
-                            <button class="uk-button uk-button-primary">
-                            {{ else }}
-                            <input type="hidden" value="last" name="sortBy">
-                            <button class="uk-button uk-button-default">
-                            {{ end }}
-                                <span uk-icon="icon: menu"></span> Recent
-                            </button>
-                        </form>
-                    </div>
+                    <div class="uk-button-group">
+                        <div>
+                            <form action="/{{ $program }}" method="get">
+                                {{ if $waters }}
+                                <input type="hidden" name="waters" value="{{ $waters }}">
+                                {{ end }}
+                                {{ if eq .sortedBy "last" }}
+                                <button uk-tooltip="title: {{ $lastStockedLanguage }}" class="uk-button uk-button-secondary">
+                                {{ else }}
+                                <input type="hidden" value="last" name="sortBy">
+                                <button uk-tooltip="title: {{ $lastStockedLanguage }}" class="uk-button uk-button-default">
+                                {{ end }}
+                                    <span uk-icon="icon: history"></span>
+                                </button>
+                            </form>
+                        </div>
 
-                    <div>
-                        <form action="/{{ $program }}" method="get">
-                            {{ if $waters }}
-                            <input type="hidden" name="waters" value="{{ $waters }}">
-                            {{ end }}
-                            {{ if eq .sortedBy "next" }}
-                            <button class="uk-button uk-button-primary">
-                            {{ else }}
-                            <input type="hidden" value="next" name="sortBy">
-                            <button class="uk-button uk-button-default">
-                            {{ end }}
-                                <span uk-icon="icon: menu"></span> Upcoming
-                            </button>
-                        </form>
+                        <div>
+                            <form action="/{{ $program }}" method="get">
+                                {{ if $waters }}
+                                <input type="hidden" name="waters" value="{{ $waters }}">
+                                {{ end }}
+                                {{ if eq .sortedBy "next" }}
+                                <button uk-tooltip="title: {{ $nextStockingLanguage }}" class="uk-button uk-button-secondary">
+                                {{ else }}
+                                <input type="hidden" value="next" name="sortBy">
+                                <button uk-tooltip="title: {{ $nextStockingLanguage }}" class="uk-button uk-button-default">
+                                {{ end }}
+                                    <span uk-icon="icon: future"></span>
+                                </button>
+                            </form>
+                        </div>
+
+                        {{ if not $waters }}
+                        <div>
+                            <form action="/{{ $program }}" method="get">
+                                <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary" value="" name="waters" id="selectionsButton"
+                                _='on click set my value to watersQuery()' disabled>
+                                    <span uk-icon="icon: heart"></span><span uk-icon="icon: chevron-right"></span>
+                                </button>
+                            </form>
+                        </div>
+                        {{ end }}
                     </div>
 
                     {{ if not $waters }}
-                    <div>
-                        <form action="/{{ $program }}" method="get">
-                            <button uk-tooltip="title: Add Waters to favorites" class="uk-button uk-button-primary" value="" name="waters" id="selectionsButton"
-                            _='on click set my value to watersQuery()' disabled>
-                                <span uk-icon="icon: heart"></span> Favorites
-                            </button>
-                        </form>
-                    </div>
-                    {{ end }}
-
-                    {{ if not $waters }}
-                    <div style="margin-top: 1%;">
+                    <div class="uk-width-1-1" style="margin-top: 0%;">
                         <div class="uk-grid" uk-grid>
                             <div id="showSelected">
                             </div>
@@ -158,11 +163,11 @@
                 </div>
                 <div class="uk-card-body">
                     <dl class="uk-description-list">
-                        <dt>Most recent stocking</dt>
+                        <dt>{{ $lastStockedLanguage }}</dt>
                         {{ $lastStock := $data.Last }}
                         <dd>{{ $lastStock.Year }} {{ $lastStock.Month.String }} {{ $lastStock.Day }}: {{ $lastStock.Stock }}</dd>
 
-                        <dt>Upcoming stocking</dt>
+                        <dt>{{ $nextStockingLanguage }}</dt>
                         {{ $nextStock := $data.Next }}
                         <dd>{{ $nextStock.Year }} {{ $nextStock.Month.String }} {{ $nextStock.Day }}: {{ $nextStock.Stock }}</dd>
 
@@ -179,7 +184,16 @@
                                 {{ range $week := $data.Data }}
                                     {{ if or $showAll (ne $week.Stock "None") }}
                                     <tr>
-                                        <td>{{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}</td>
+                                        <td>
+                                        {{ if eq $lastStock $week }}
+                                        <span uk-tooltip="title: {{ $lastStockedLanguage }}" uk-icon="icon: history"></span>
+                                        {{ else if eq $nextStock $week }}
+                                        <span uk-tooltip="title: {{ $nextStockingLanguage }}" uk-icon="icon: future"></span>
+                                        {{ else }}
+                                        <span style="visibility: hidden;" uk-icon="icon: future"></span>
+                                        {{ end }}
+                                        {{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}
+                                        </td>
                                         <td>{{ $week.Stock }}</td>
                                     </tr>
                                     {{ end }}
