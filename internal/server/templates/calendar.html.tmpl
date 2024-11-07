@@ -20,6 +20,7 @@
         end
 
         remove @disabled from #selectionsButton
+        get #selectionsButton then set its @uk-tooltip to "title: Go to favorites"
 
         set elements to ''
         for water in $selections
@@ -162,46 +163,45 @@
                     {{ end }}
                 </div>
                 <div class="uk-card-body">
-                    <dl class="uk-description-list">
-                        <dt>{{ $lastStockedLanguage }}</dt>
-                        {{ $lastStock := $data.Last }}
-                        <dd>{{ $lastStock.Year }} {{ $lastStock.Month.String }} {{ $lastStock.Day }}: {{ $lastStock.Stock }}</dd>
+                    {{ $lastStock := $data.Last }}
+                    {{ $nextStock := $data.Next }}
 
-                        <dt>{{ $nextStockingLanguage }}</dt>
-                        {{ $nextStock := $data.Next }}
-                        <dd>{{ $nextStock.Year }} {{ $nextStock.Month.String }} {{ $nextStock.Day }}: {{ $nextStock.Stock }}</dd>
+                    <p>
+                    {{ if eq $lastStock.Stock "Unknown" }}
+                    Stocking was scheduled for <b>{{ $lastStock.HumanTime }}</b>, but may not have been completed.
+                    {{ else }}
+                    Stocked with {{ $lastStock.Stock }} <b>{{ $lastStock.HumanTime }}</b>.
+                    {{ end }}
+                    Stocking with {{ $nextStock.Stock }} <b>{{ $nextStock.HumanTime }}</b>.
+                    </p>
 
-                        <dt>All Stocking Data</dt>
-                        <dd>
-                            <table class="uk-table uk-table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Stock</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                {{ range $week := $data.Data }}
-                                    {{ if or $showAll (ne $week.Stock "None") }}
-                                    <tr>
-                                        <td>
-                                        {{ if eq $lastStock $week }}
-                                        <span uk-tooltip="title: {{ $lastStockedLanguage }}" uk-icon="icon: history"></span>
-                                        {{ else if eq $nextStock $week }}
-                                        <span uk-tooltip="title: {{ $nextStockingLanguage }}" uk-icon="icon: future"></span>
-                                        {{ else }}
-                                        <span style="visibility: hidden;" uk-icon="icon: future"></span>
-                                        {{ end }}
-                                        {{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}
-                                        </td>
-                                        <td>{{ $week.Stock }}</td>
-                                    </tr>
-                                    {{ end }}
+                    <table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{ range $week := $data.Data }}
+                            {{ if or $showAll (ne $week.Stock "None") }}
+                            <tr>
+                                <td>
+                                {{ if eq $lastStock $week }}
+                                <span uk-tooltip="title: {{ $lastStockedLanguage }}" uk-icon="icon: history"></span>
+                                {{ else if eq $nextStock $week }}
+                                <span uk-tooltip="title: {{ $nextStockingLanguage }}" uk-icon="icon: future"></span>
+                                {{ else }}
+                                <span style="visibility: hidden;" uk-icon="icon: future"></span>
                                 {{ end }}
-                                </tbody>
-                            </table>
-                        </dd>
-                    </dl>
+                                {{ $week.Year }} {{ $week.Month.String }} {{ $week.Day }}
+                                </td>
+                                <td>{{ $week.Stock }}</td>
+                            </tr>
+                            {{ end }}
+                        {{ end }}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

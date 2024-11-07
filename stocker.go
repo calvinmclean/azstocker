@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/dustin/go-humanize"
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 	googleHTTP "google.golang.org/api/transport/http"
@@ -94,6 +95,10 @@ func (s Week) Time() time.Time {
 	return time.Date(s.Year, s.Month, s.Day, 0, 0, 0, 0, azTime)
 }
 
+func (s Week) HumanTime() string {
+	return humanize.RelTime(s.Time(), getNow(), "ago", "from now")
+}
+
 // String formats the Week to show the date and stocking data
 func (s Week) String() string {
 	if s.Year == 0 && s.Day == 0 {
@@ -162,7 +167,7 @@ func (s Calendar) Next() Week {
 	now := getNow().In(azTime)
 
 	for _, data := range s.Data {
-		if data.Stock == NoneFish {
+		if data.Stock == NoneFish || data.Stock == UnknownFish {
 			continue
 		}
 		if data.Time().After(now) {
