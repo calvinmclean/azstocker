@@ -16,7 +16,7 @@ import (
 
 func main() {
 	var debug, showNext, showLast, showAllStock, showAll bool
-	var apiKey, programStr, addr, cacheDir string
+	var apiKey, programStr, addr, cacheDir, pushoverAppToken, pushoverRecipientToken string
 	var cacheMaxAge time.Duration
 	var waters []string
 	app := &cli.App{
@@ -101,6 +101,18 @@ func main() {
 				Name: "server",
 				Flags: []cli.Flag{
 					&cli.StringFlag{
+						Name:        "pushover-app-token",
+						Usage:       "App token for Pushover notifications",
+						Destination: &pushoverAppToken,
+						EnvVars:     []string{"PUSHOVER_APP_TOKEN"},
+					},
+					&cli.StringFlag{
+						Name:        "pushover-recipient-token",
+						Usage:       "Recipient token for Pushover notifications",
+						Destination: &pushoverRecipientToken,
+						EnvVars:     []string{"PUSHOVER_RECIPIENT_TOKEN"},
+					},
+					&cli.StringFlag{
 						Name:        "address",
 						Usage:       "address to serve on",
 						Destination: &addr,
@@ -117,7 +129,13 @@ func main() {
 					if err != nil {
 						return fmt.Errorf("error creating Sheets service: %w", err)
 					}
-					return server.RunServer(addr, srv)
+
+					opts := []server.Option{}
+					if pushoverAppToken != "" && pushoverRecipientToken != "" {
+						opts = append(opts, server.WithPushoverClient(pushoverAppToken, pushoverRecipientToken))
+					}
+
+					return server.RunServer(addr, srv, opts...)
 				},
 			},
 		},

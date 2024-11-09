@@ -3,6 +3,8 @@ module github.com/calvinmclean/stocker
 go 1.23.1
 
 require (
+	github.com/dustin/go-humanize v1.0.1
+	github.com/gregdel/pushover v1.3.1
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79
 	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.5
@@ -16,7 +18,6 @@ require (
 	cloud.google.com/go/compute/metadata v0.5.2 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect

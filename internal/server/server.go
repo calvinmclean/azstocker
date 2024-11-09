@@ -2,6 +2,7 @@ package server
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
 	"log/slog"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync"
 
 	"github.com/calvinmclean/stocker"
 
@@ -23,28 +25,71 @@ const (
 //go:embed templates/*
 var templateFS embed.FS
 
-func RunServer(addr string, srv *sheets.Service) error {
-	mux := http.NewServeMux()
+type Option func(*server) error
 
-	s := &server{srv}
-	mux.HandleFunc("/", s.homepage)
-	mux.HandleFunc("/{program}", s.getProgramSchedule)
+func WithPushoverClient(appToken, recipientToken string) Option {
+	return func(s *server) error {
+		nc, err := newNotifyClient(appToken, recipientToken)
+		if err != nil {
+			return fmt.Errorf("error initializing notify client: %w", err)
+		}
+		s.nc = nc
+		s.notifySourceIPs = &sync.Map{}
+		return nil
+	}
+}
+
+func RunServer(addr string, srv *sheets.Service, opts ...Option) error {
+	mux, err := newServer(srv, opts...)
+	if err != nil {
+		return err
+	}
 
 	return http.ListenAndServe(addr, mux)
 }
 
+func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
+	mux := http.NewServeMux()
+
+	s := &server{srv, nil, nil}
+	for _, opt := range opts {
+		err := opt(s)
+		if err != nil {
+			return nil, err
+		}
+	}
+	mux.HandleFunc("/", s.homepage)
+	if s.nc != nil {
+		mux.HandleFunc("/notify", s.notify)
+	}
+	mux.HandleFunc("/{program}", s.getProgramSchedule)
+
+	return mux, nil
+}
+
 type server struct {
 	srv *sheets.Service
+
+	nc              *notifyClient
+	notifySourceIPs *sync.Map
 }
 
 func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	tmpl, err := loadTemplates()
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to parse template", "err", err.Error())
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "homepage", nil)
+	err = tmpl.ExecuteTemplate(w, "homepage", map[string]any{
+		"notifyEnabled": s.notifyEnabled(r),
+		"program":       "home",
+	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
 		return
@@ -52,6 +97,11 @@ func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	programStr := r.PathValue("program")
 	program, err := stocker.ParseProgram(programStr)
 	if err != nil {
@@ -87,17 +137,59 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	watersStr := strings.Join(waters, ", ")
 	err = tmpl.ExecuteTemplate(w, "calendar", map[string]any{
-		"showAll":   showAll,
-		"program":   program,
-		"calendar":  stockingData,
-		"waters":    watersStr,
-		"numWaters": len(waters),
-		"sortedBy":  sortBy,
+		"showAll":       showAll,
+		"program":       program,
+		"calendar":      stockingData,
+		"waters":        watersStr,
+		"numWaters":     len(waters),
+		"sortedBy":      sortBy,
+		"notifyEnabled": s.notifyEnabled(r),
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
 		return
 	}
+}
+
+func (s *server) notify(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
+	remoteAddr := remoteAddr(r)
+
+	_, exists := s.notifySourceIPs.LoadOrStore(remoteAddr, struct{}{})
+	if exists {
+		slog.Log(r.Context(), slog.LevelWarn, "notify from repeated IP", "remote_addr", remoteAddr)
+		return
+	}
+
+	slog.Log(r.Context(), slog.LevelInfo, "received notify request", "remote_addr", remoteAddr)
+
+	err := s.nc.send("AZStocker", "AZStocker got a like!")
+	if err != nil {
+		slog.Log(r.Context(), slog.LevelError, "error notifying", "err", err)
+		return
+	}
+}
+
+func (s *server) notifyEnabled(r *http.Request) bool {
+	if s.nc == nil {
+		return false
+	}
+
+	_, alreadyNotified := s.notifySourceIPs.Load(remoteAddr(r))
+	return !alreadyNotified
+}
+
+func remoteAddr(r *http.Request) string {
+	remoteAddr := r.RemoteAddr
+	i := strings.LastIndex(r.RemoteAddr, ":")
+	if i > 0 {
+		remoteAddr = remoteAddr[0:i]
+	}
+	return remoteAddr
 }
 
 type query struct {

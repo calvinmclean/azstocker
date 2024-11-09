@@ -22,17 +22,17 @@
 <body>
 
 {{ $cfpActive := "" }}
-{{ if eq . "cfp" }}
+{{ if eq .program "cfp" }}
 {{ $cfpActive = "uk-active" }}
 {{ end }}
 
 {{ $winterActive := "" }}
-{{ if eq . "winter" }}
+{{ if eq .program "winter" }}
 {{ $winterActive = "uk-active" }}
 {{ end }}
 
 {{ $springsummerActive := "" }}
-{{ if eq . "springsummer" }}
+{{ if eq .program "springsummer" }}
 {{ $springsummerActive = "uk-active" }}
 {{ end }}
 
@@ -54,6 +54,23 @@
                     </li>
                 </ul>
             </div>
+            {{ if .notifyEnabled }}
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a
+                        _="on click get closest <li/> then
+                                    set its innerHTML to '<p>Thanks!</p>'
+                                    then wait 2s
+                                    then remove it
+                                then fetch /notify with method:'POST'
+                                "
+                        uk-tooltip="Love this site? Click here to let me know"
+                        class="uk-icon-button" uk-icon="icon: heart; ratio: 1.5"></a>
+                    </li>
+                </ul>
+            </div>
+            {{ end }}
         </div>
     </div>
 </nav>
