@@ -2,34 +2,48 @@
 {{ template "header" "home" }}
 
 <div class="uk-margin-top">
-    <h1 class="uk-heading-medium uk-text-center">Stocker</h1>
-    <h4 class="uk-text-center">Arizona Fish Stocking Schedule</h4>
-    <div class="uk-card uk-card-default" style="margin: 5%;">
-        <div class="uk-card-body">
-            <div class="uk-grid uk-flex-center" uk-grid>
-                <div class="uk-margin">
-                    <form action="/cfp" method="get">
-                        <button class="uk-button uk-button-primary uk-button-large">
-                            Community Fishing Program Schedule
-                        </button>
-                    </form>
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
+            <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                <div>
+                    <p>
+                    This site uses information provided by the <a href="https://www.azgfd.com/fishing-2/where-to-fish/fish-stocking-schedule/">Arizona Game & Fish Department</a>.
+                    </p>
                 </div>
-
-                <form action="/winter" method="get">
-                    <div class="uk-margin">
-                        <button class="uk-button uk-button-primary uk-button-large">
-                        Winter Schedule
-                        </button>
-                    </div>
-                </form>
-
-                <form action="/springsummer" method="get">
-                    <div class="uk-margin">
-                        <button class="uk-button uk-button-primary uk-button-large">
-                        Spring & Summer Schedule
-                        </button>
-                    </div>
-                </form>
+                <div>
+                    <p>
+                    Choose one of the schedules to browse recent and upcoming fish stocking dates.
+                    Save a bookmark to your favorite waters!
+                    </p>
+                </div>
+                <div>
+                    <p>Please make sure to always have a valid fishing license and follow local regulations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+            <h3>AZGFD Fish Stocking Schedules</h3>
+            <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                <div>
+                    <a href="/cfp" class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                        <h3 class="uk-card-title"><span class="uk-link-heading">Community Fishing <span uk-icon="icon: chevron-right"></span></h3>
+                        <p>Arizona's many local lakes and ponds are regularly stocked with catfish and trout.</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="/winter" class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                        <h3 class="uk-card-title"><span class="uk-link-heading">2024-25 Winter <span uk-icon="icon: chevron-right"></span></h3>
+                        <p>The Game & Fish Department stocks the state's lakes with trout throughout the winter.</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="/springsummer" class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                        <h3 class="uk-card-title"><span class="uk-link-heading">2024 Spring & Summer <span uk-icon="icon: chevron-right"></span></h3>
+                        <p>Trout stocking continues throughout the early spring and into summer in some locations.</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
