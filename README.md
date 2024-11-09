@@ -7,6 +7,8 @@
 
 Stocker leverages data from [AZ GFD's Stocking Schedule](https://www.azgfd.com/fishing-2/where-to-fish/fish-stocking-schedule/) to provide on-demand information about fish stocking in Arizona.
 
+Check it out at https://azstocker.com!
+
 ## How To
 
 Install using `go install` or cloning this repository:

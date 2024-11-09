@@ -33,7 +33,7 @@ func main() {
 			&cli.DurationFlag{
 				Name:        "cache-max-age",
 				Usage:       "max time for cache expiration",
-				Value:       time.Hour,
+				Value:       24 * time.Hour,
 				Destination: &cacheMaxAge,
 			},
 			&cli.StringFlag{
@@ -42,7 +42,7 @@ func main() {
 				Destination: &cacheDir,
 			},
 		},
-		DefaultCommand: "get",
+		DefaultCommand: "server",
 		Commands: []*cli.Command{
 			{
 				Name:        "get",
