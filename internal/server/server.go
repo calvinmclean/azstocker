@@ -122,10 +122,15 @@ func (q query) StringSlice(key string) []string {
 }
 
 func loadTemplates() (*template.Template, error) {
+	tmpl := template.New("template").Funcs(template.FuncMap{
+		"escapeSingleQuote": func(in string) string {
+			return strings.ReplaceAll(in, "'", "\\'")
+		},
+	})
+
 	if os.Getenv("DEV") == "true" {
 		_, callerFile, _, _ := runtime.Caller(0)
-		return template.ParseGlob(filepath.Join(filepath.Dir(callerFile), templateFilename))
+		return tmpl.ParseGlob(filepath.Join(filepath.Dir(callerFile), templateFilename))
 	}
-
-	return template.ParseFS(templateFS, templateFilename)
+	return tmpl.ParseFS(templateFS, templateFilename)
 }

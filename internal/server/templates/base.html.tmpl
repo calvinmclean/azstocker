@@ -20,6 +20,43 @@
 </style>
 
 <body>
+
+{{ $cfpActive := "" }}
+{{ if eq . "cfp" }}
+{{ $cfpActive = "uk-active" }}
+{{ end }}
+
+{{ $winterActive := "" }}
+{{ if eq . "winter" }}
+{{ $winterActive = "uk-active" }}
+{{ end }}
+
+{{ $springsummerActive := "" }}
+{{ if eq . "springsummer" }}
+{{ $springsummerActive = "uk-active" }}
+{{ end }}
+
+<nav class="uk-navbar-container">
+    <div class="uk-container">
+        <div uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="/">AZStocker</a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a>Schedules</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="{{ $cfpActive }}"><a href="/cfp">Community Fishing</a></li>
+                                <li class="{{ $winterActive }}"><a href="/winter">Winter</a></li>
+                                <li class="{{ $springsummerActive }}"><a href="/springsummer">Spring</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
 {{ end }}
 
 {{ define "footer" }}

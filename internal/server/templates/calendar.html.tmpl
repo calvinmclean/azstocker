@@ -1,5 +1,6 @@
 {{ define "calendar" }}
-{{ template "header" . }}
+{{ template "header" .program }}
+
 {{ $showAll := .showAll }}
 {{ $program := .program }}
 {{ $waters := .waters }}
@@ -170,11 +171,11 @@
                                 if @uk-icon == 'icon: heart'
                                     set @uk-icon to 'icon: check'
                                     then remove @uk-tooltip from closest <div/>
-                                    then append '{{ $data.WaterName }}' to $selections
+                                    then append '{{ escapeSingleQuote $data.WaterName }}' to $selections
                                     then updateSelection()
                                 else
                                     set @uk-icon to 'icon: heart'
-                                    then removeSelections('{{ $data.WaterName }}')
+                                    then removeSelections('{{ escapeSingleQuote $data.WaterName }}')
                                     then get closest <div/> then
                                         set its @uk-tooltip to 'title: Add to favorites'
                                     then updateSelection()
