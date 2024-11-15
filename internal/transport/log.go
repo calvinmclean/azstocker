@@ -4,8 +4,6 @@ import (
 	"log/slog"
 	"net/http"
 	"time"
-
-	"github.com/gregjones/httpcache"
 )
 
 func Log(next http.RoundTripper) http.RoundTripper {
@@ -32,11 +30,9 @@ func (l *log) RoundTrip(r *http.Request) (*http.Response, error) {
 	if err != nil {
 		keys = append(keys, "err", err.Error())
 		slog.Log(r.Context(), slog.LevelError, "request failed", keys...)
-	} else {
+	} else if resp != nil {
 		keys = append(keys, "status", resp.StatusCode)
-		if resp.Header.Get(httpcache.XFromCache) == "1" {
-			keys = append(keys, "cached", true)
-		}
+		keys = append(keys, "cached", cacheUsed(resp.Header))
 		slog.Log(r.Context(), slog.LevelInfo, "finished request", keys...)
 	}
 	return resp, err

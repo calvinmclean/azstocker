@@ -46,9 +46,13 @@ func newCacheControl(cache httpcache.Cache, maxAge time.Duration, next http.Roun
 
 func (h *cacheControl) RoundTrip(r *http.Request) (*http.Response, error) {
 	r.Header.Set("Cache-Control", fmt.Sprintf("max-age=%d", int64(h.maxAge.Seconds())))
-	res, err := h.rt.RoundTrip(r)
-	if res != nil {
-		httpCacheMetric.WithLabelValues(r.URL.Path, res.Header.Get(httpcache.XFromCache)).Inc()
+	resp, err := h.rt.RoundTrip(r)
+	if resp != nil {
+		httpCacheMetric.WithLabelValues(r.URL.Path, fmt.Sprint(cacheUsed(resp.Header))).Inc()
 	}
-	return res, err
+	return resp, err
+}
+
+func cacheUsed(headers http.Header) bool {
+	return headers.Get(httpcache.XFromCache) == "1"
 }
