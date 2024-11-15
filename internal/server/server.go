@@ -1,6 +1,7 @@
 package server
 
 import (
+	"context"
 	"embed"
 	"fmt"
 	"html/template"
@@ -14,13 +15,38 @@ import (
 
 	"github.com/calvinmclean/stocker"
 
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	prommetrics "github.com/slok/go-http-metrics/metrics/prometheus"
+	metrics_middleware "github.com/slok/go-http-metrics/middleware"
+	"github.com/slok/go-http-metrics/middleware/std"
 	"google.golang.org/api/sheets/v4"
 )
 
 const (
 	watersQueryParam = "waters"
 	templateFilename = "templates/*"
+
+	metricsAddr = "0.0.0.0:9091"
 )
+
+var (
+	programsGauge = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+		Namespace: "stocker",
+		Name:      "program_requests",
+		Help:      "gauge of programs requested",
+	}, []string{"program"})
+
+	watersGauge = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+		Namespace: "stocker",
+		Name:      "water_requests",
+		Help:      "gauge of waters requested",
+	}, []string{"water"})
+)
+
+func init() {
+	prometheus.MustRegister(programsGauge, watersGauge)
+}
 
 //go:embed templates/*
 var templateFS embed.FS
@@ -45,7 +71,25 @@ func RunServer(addr string, srv *sheets.Service, opts ...Option) error {
 		return err
 	}
 
-	return http.ListenAndServe(addr, mux)
+	metricServer, metricMiddleware := newMetricsServer()
+	go func() {
+		metricErr := http.ListenAndServe(metricsAddr, metricServer)
+		if err != nil {
+			slog.Log(context.Background(), slog.LevelError, "error running metrics server", "err", metricErr.Error())
+		}
+	}()
+	return http.ListenAndServe(addr, metricMiddleware(mux))
+}
+
+func newMetricsServer() (*http.ServeMux, func(http.Handler) http.Handler) {
+	mux := http.NewServeMux()
+	mux.Handle("/metrics", promhttp.Handler())
+
+	middleware := std.HandlerProvider("", metrics_middleware.New(metrics_middleware.Config{
+		Recorder: prommetrics.NewRecorder(prommetrics.Config{Prefix: "stocker"}),
+	}))
+
+	return mux, middleware
 }
 
 func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
@@ -62,6 +106,7 @@ func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
 	if s.nc != nil {
 		mux.HandleFunc("/notify", s.notify)
 	}
+	mux.HandleFunc("/manifest.json", s.pwaManifest)
 	mux.HandleFunc("/{program}", s.getProgramSchedule)
 
 	return mux, nil
@@ -72,6 +117,15 @@ type server struct {
 
 	nc              *notifyClient
 	notifySourceIPs *sync.Map
+}
+
+// manifest.json enables PWA for mobile devices
+func (s *server) pwaManifest(w http.ResponseWriter, r *http.Request) {
+	_, _ = w.Write([]byte(`{
+	  "name": "AZ Stocker",
+	  "start_url": "/",
+	  "display": "standalone"
+	}`))
 }
 
 func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
@@ -109,10 +163,17 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	programsGauge.WithLabelValues(programStr).Inc()
+
 	q := query{r}
 	showAll := q.Bool("showAll")
 	sortBy := r.URL.Query().Get("sortBy")
 	waters := q.StringSlice("waters")
+	if len(waters) > 0 {
+		for _, w := range waters {
+			watersGauge.WithLabelValues(w).Inc()
+		}
+	}
 
 	stockingData, err := stocker.Get(s.srv, program, waters)
 	if err != nil {

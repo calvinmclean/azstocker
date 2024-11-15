@@ -7,7 +7,18 @@ import (
 
 	"github.com/gregjones/httpcache"
 	"github.com/gregjones/httpcache/diskcache"
+	"github.com/prometheus/client_golang/prometheus"
 )
+
+var httpCacheMetric = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Namespace: "stocker",
+	Name:      "http_client_cache",
+	Help:      "gauge of cache usage",
+}, []string{"path", "cache_used"})
+
+func init() {
+	prometheus.MustRegister(httpCacheMetric)
+}
 
 // cacheControl is intended to be used to wrap the httpcache.Transport and set
 // necessary headers used to determine if cache should be used
@@ -18,18 +29,26 @@ type cacheControl struct {
 
 func NewDiskCacheControl(path string, maxAge time.Duration, next http.RoundTripper) http.RoundTripper {
 	cache := diskcache.New(path)
-	cacheRT := httpcache.NewTransport(cache)
-	cacheRT.Transport = next
-	return &cacheControl{cacheRT, maxAge}
+	return newCacheControl(cache, maxAge, next)
 }
 
 func NewCacheControl(maxAge time.Duration, next http.RoundTripper) http.RoundTripper {
-	cacheRT := httpcache.NewMemoryCacheTransport()
+	cache := httpcache.NewMemoryCache()
+	return newCacheControl(cache, maxAge, next)
+}
+
+func newCacheControl(cache httpcache.Cache, maxAge time.Duration, next http.RoundTripper) http.RoundTripper {
+	cacheRT := httpcache.NewTransport(cache)
 	cacheRT.Transport = next
+	cacheRT.MarkCachedResponses = true
 	return &cacheControl{cacheRT, maxAge}
 }
 
 func (h *cacheControl) RoundTrip(r *http.Request) (*http.Response, error) {
 	r.Header.Set("Cache-Control", fmt.Sprintf("max-age=%d", int64(h.maxAge.Seconds())))
-	return h.rt.RoundTrip(r)
+	res, err := h.rt.RoundTrip(r)
+	if res != nil {
+		httpCacheMetric.WithLabelValues(r.URL.Path, res.Header.Get(httpcache.XFromCache)).Inc()
+	}
+	return res, err
 }
