@@ -103,6 +103,7 @@ func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
 		}
 	}
 	mux.HandleFunc("/", s.homepage)
+	mux.HandleFunc("/index.html", s.homepage)
 	if s.nc != nil {
 		mux.HandleFunc("/notify", s.notify)
 	}
