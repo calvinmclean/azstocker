@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.13/dist/js/uikit-icons.min.js"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
+</head>
+
+<body>
+
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="/">AZStocker</a>
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a>Schedules <span uk-navbar-parent-icon></span></a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class=""><a href="https://azstocker.com/cfp">Community Fishing</a></li>
+                                    <li class=""><a href="https://azstocker.com/winter">Winter</a></li>
+                                    <li class=""><a href="https://azstocker.com/springsummer">Spring</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="uk-margin-top">
+        <div class="uk-section uk-section-default">
+            <div class="uk-container">
+                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <p>
+                            This site uses information provided by the <a
+                                href="https://www.azgfd.com/fishing-2/where-to-fish/fish-stocking-schedule/"
+                                uk-icon="link-external">Arizona Game & Fish Department</a>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            Choose one of the schedules to browse recent and upcoming fish stocking dates.
+                            Save a bookmark to your favorite waters!
+                        </p>
+                    </div>
+                    <div>
+                        <p>Make sure to always have a valid fishing license and follow local regulations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-section uk-section-muted">
+            <div class="uk-container">
+                <h3>Arizona GFD Stocking Schedules</h3>
+                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <a href="https://azstocker.com/cfp" class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                            <h3 class="uk-card-title"><span class="uk-link-heading">Community Fishing <span
+                                        uk-icon="icon: chevron-right"></span></h3>
+                            <p>Arizona's many local lakes and ponds are regularly stocked with catfish and trout</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://azstocker.com/winter"
+                            class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                            <h3 class="uk-card-title"><span class="uk-link-heading">2024-25 Winter <span
+                                        uk-icon="icon: chevron-right"></span></h3>
+                            <p>The Game & Fish Department stocks the state's lakes with trout throughout the winter</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://azstocker.com/springsummer"
+                            class="uk-card uk-card-body uk-card-default uk-link-toggle">
+                            <h3 class="uk-card-title"><span class="uk-link-heading">2024 Spring & Summer <span
+                                        uk-icon="icon: chevron-right"></span></h3>
+                            <p>Trout stocking continues throughout the early spring and into summer in some locations
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-section uk-section-default">
+            <div class="uk-container">
+                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                    <div>
+                    </div>
+
+                    <div class="uk-text-center">
+                        <a href="https://github.com/calvinmclean/stocker" class="uk-icon-link"
+                            uk-icon="icon: github; ratio: 2"></a>
+                        <p>
+                            This site is open source!
+                        </p>
+                    </div>
+
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
