@@ -162,6 +162,10 @@
                         </h3>
                     </a>
 
+                    {{ if $waters }}
+                    <p class="uk-text-meta uk-margin-remove-top">Fish Stocking Schedule</p>
+                    {{ end }}
+
                     {{ if not $waters }}
                     <div uk-tooltip="title: Add to favorites" class="uk-position-top-left uk-margin-small-top uk-margin-small-left">
                         <a uk-icon="icon: heart"
