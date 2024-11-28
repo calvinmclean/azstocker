@@ -56,7 +56,8 @@ func TestWriteSitemap(t *testing.T) {
 	srv, err := stocker.NewService(apiKey, cacheControl)
 	assert.NoError(t, err)
 
-	expected := `http://example.com/cfp?waters=Avondale+-+Alamar+Park+Pond
+	expected := `http://example.com/cfp
+http://example.com/cfp?waters=Avondale+-+Alamar+Park+Pond
 http://example.com/cfp?waters=Avondale+-+Festival+Fields+Pond
 http://example.com/cfp?waters=Avondale+-+Friendship+Pond
 http://example.com/cfp?waters=Buckeye+-+Sundance+Park+Lake
@@ -107,6 +108,7 @@ http://example.com/cfp?waters=Tucson+-+Silverbell+Lake
 http://example.com/cfp?waters=Yuma+-+Fortuna+Lake
 http://example.com/cfp?waters=Yuma+-+PAAC+Pond
 http://example.com/cfp?waters=Yuma+-+West+Wetlands+Pond
+http://example.com/winter
 http://example.com/winter?waters=ASHURST+LAKE
 http://example.com/winter?waters=BEAVER+CREEK+%28WET%29
 http://example.com/winter?waters=BENDER%27S+POND
@@ -155,6 +157,7 @@ http://example.com/winter?waters=WEST+WETLANDS+POND
 http://example.com/winter?waters=WOODLAND+RESERVOIR
 http://example.com/winter?waters=YAVAPAI+LAKES
 http://example.com/winter?waters=https%3A%2F%2Fwww.azgfd.com%2F
+http://example.com/springsummer
 `
 
 	w := new(bytes.Buffer)

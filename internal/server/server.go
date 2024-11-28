@@ -177,6 +177,7 @@ func (s *server) writeSitemap(ctx context.Context, w io.Writer) {
 		})
 
 		urlBase := fmt.Sprintf("%s/%s", s.urlBase, p)
+		fmt.Fprintf(w, "%s\n", urlBase)
 
 		for _, data := range stockingData {
 			query := url.Values{
