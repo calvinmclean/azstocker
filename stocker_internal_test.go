@@ -240,7 +240,7 @@ func createTestService(t *testing.T, cassetteName string) (*sheets.Service, *rec
 	t.Helper()
 
 	r, err := recorder.New(
-		"fixtures/"+cassetteName,
+		"internal/testdata/fixtures/"+cassetteName,
 		recorder.WithSkipRequestLatency(true),
 		// Don't save API Key in fixtures
 		recorder.WithHook(func(i *cassette.Interaction) error {

@@ -5,8 +5,10 @@ import (
 	"embed"
 	"fmt"
 	"html/template"
+	"io"
 	"log/slog"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -65,8 +67,8 @@ func WithPushoverClient(appToken, recipientToken string) Option {
 	}
 }
 
-func RunServer(addr string, srv *sheets.Service, opts ...Option) error {
-	mux, err := newServer(srv, opts...)
+func RunServer(addr string, srv *sheets.Service, urlBase string, opts ...Option) error {
+	mux, err := newServer(srv, urlBase, opts...)
 	if err != nil {
 		return err
 	}
@@ -92,10 +94,10 @@ func newMetricsServer() (*http.ServeMux, func(http.Handler) http.Handler) {
 	return mux, middleware
 }
 
-func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
+func newServer(srv *sheets.Service, urlBase string, opts ...Option) (*http.ServeMux, error) {
 	mux := http.NewServeMux()
 
-	s := &server{srv, nil, nil}
+	s := &server{srv, urlBase, nil, nil}
 	for _, opt := range opts {
 		err := opt(s)
 		if err != nil {
@@ -104,6 +106,7 @@ func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
 	}
 	mux.HandleFunc("/", s.homepage)
 	mux.HandleFunc("/index.html", s.homepage)
+	mux.HandleFunc("/sitemap.txt", s.sitemap)
 	if s.nc != nil {
 		mux.HandleFunc("/notify", s.notify)
 	}
@@ -114,7 +117,8 @@ func newServer(srv *sheets.Service, opts ...Option) (*http.ServeMux, error) {
 }
 
 type server struct {
-	srv *sheets.Service
+	srv     *sheets.Service
+	urlBase string
 
 	nc              *notifyClient
 	notifySourceIPs *sync.Map
@@ -148,6 +152,38 @@ func (s *server) homepage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
 		return
+	}
+}
+
+func (s *server) sitemap(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
+	s.writeSitemap(r.Context(), w)
+}
+
+func (s *server) writeSitemap(ctx context.Context, w io.Writer) {
+	programs := []stocker.Program{stocker.CFProgram, stocker.WinterProgram, stocker.SpringSummerProgram}
+	for _, p := range programs {
+		stockingData, err := stocker.Get(s.srv, p, []string{})
+		if err != nil {
+			slog.Log(ctx, slog.LevelError, "failed to get data", "err", err.Error())
+		}
+
+		stockingData.Sort(func(c1, c2 stocker.Calendar) int {
+			return strings.Compare(c1.WaterName, c2.WaterName)
+		})
+
+		urlBase := fmt.Sprintf("%s/%s", s.urlBase, p)
+
+		for _, data := range stockingData {
+			query := url.Values{
+				"waters": []string{data.WaterName},
+			}
+			fmt.Fprintf(w, "%s?%s\n", urlBase, query.Encode())
+		}
 	}
 }
 

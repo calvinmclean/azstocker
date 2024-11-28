@@ -16,7 +16,7 @@ import (
 
 func main() {
 	var debug, showNext, showLast, showAllStock, showAll bool
-	var apiKey, programStr, addr, cacheDir, pushoverAppToken, pushoverRecipientToken string
+	var apiKey, programStr, addr, cacheDir, pushoverAppToken, pushoverRecipientToken, urlBase string
 	var cacheMaxAge time.Duration
 	var waters []string
 	app := &cli.App{
@@ -118,6 +118,13 @@ func main() {
 						Destination: &addr,
 						Value:       ":8080",
 					},
+					&cli.StringFlag{
+						Name:        "url-base",
+						Usage:       "Base URL used when generating a sitemap with URLs",
+						Destination: &urlBase,
+						Value:       "http://localhost:8080",
+						EnvVars:     []string{"URL_BASE"},
+					},
 				},
 				Description: "run an HTTP server that responds with the AZ GFD fish stocking schedule",
 				Action: func(ctx *cli.Context) error {
@@ -135,7 +142,7 @@ func main() {
 						opts = append(opts, server.WithPushoverClient(pushoverAppToken, pushoverRecipientToken))
 					}
 
-					return server.RunServer(addr, srv, opts...)
+					return server.RunServer(addr, srv, urlBase, opts...)
 				},
 			},
 		},

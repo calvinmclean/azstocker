@@ -22,3 +22,6 @@ path = "/metrics"
 
 [[vm]]
 size = 'shared-cpu-1x'
+
+[env]
+URL_BASE = "https://azstocker.com"
