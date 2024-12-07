@@ -1,4 +1,4 @@
-package stocker
+package azstocker
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/calvinmclean/stocker/internal/transport"
+	"github.com/calvinmclean/azstocker/internal/transport"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/api/sheets/v4"
 	"gopkg.in/dnaeon/go-vcr.v4/pkg/cassette"

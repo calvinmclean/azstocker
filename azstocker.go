@@ -1,4 +1,4 @@
-package stocker
+package azstocker
 
 import (
 	"context"

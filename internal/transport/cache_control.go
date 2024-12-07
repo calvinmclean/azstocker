@@ -11,7 +11,7 @@ import (
 )
 
 var httpCacheMetric = prometheus.NewGaugeVec(prometheus.GaugeOpts{
-	Namespace: "stocker",
+	Namespace: "azstocker",
 	Name:      "http_client_cache",
 	Help:      "gauge of cache usage",
 }, []string{"path", "cache_used"})
