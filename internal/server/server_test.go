@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/calvinmclean/stocker"
-	"github.com/calvinmclean/stocker/internal/transport"
+	"github.com/calvinmclean/azstocker"
+	"github.com/calvinmclean/azstocker/internal/transport"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/dnaeon/go-vcr.v4/pkg/cassette"
 	"gopkg.in/dnaeon/go-vcr.v4/pkg/recorder"
@@ -53,7 +53,7 @@ func TestWriteSitemap(t *testing.T) {
 	}
 
 	cacheControl := transport.NewCacheControl(time.Minute, r)
-	srv, err := stocker.NewService(apiKey, cacheControl)
+	srv, err := azstocker.NewService(apiKey, cacheControl)
 	assert.NoError(t, err)
 
 	expected := `http://example.com/cfp

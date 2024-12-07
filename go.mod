@@ -1,4 +1,4 @@
-module github.com/calvinmclean/stocker
+module github.com/calvinmclean/azstocker
 
 go 1.23.1
 

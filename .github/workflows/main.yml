@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  PROJECT_NAME: stocker
+  PROJECT_NAME: azstocker
 
 jobs:
   lint_and_check:

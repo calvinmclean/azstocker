@@ -15,7 +15,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/calvinmclean/stocker"
+	"github.com/calvinmclean/azstocker"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -34,13 +34,13 @@ const (
 
 var (
 	programsGauge = prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: "stocker",
+		Namespace: "azstocker",
 		Name:      "program_requests",
 		Help:      "gauge of programs requested",
 	}, []string{"program"})
 
 	watersGauge = prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: "stocker",
+		Namespace: "azstocker",
 		Name:      "water_requests",
 		Help:      "gauge of waters requested",
 	}, []string{"water"})
@@ -88,7 +88,7 @@ func newMetricsServer() (*http.ServeMux, func(http.Handler) http.Handler) {
 	mux.Handle("/metrics", promhttp.Handler())
 
 	middleware := std.HandlerProvider("", metrics_middleware.New(metrics_middleware.Config{
-		Recorder: prommetrics.NewRecorder(prommetrics.Config{Prefix: "stocker"}),
+		Recorder: prommetrics.NewRecorder(prommetrics.Config{Prefix: "azstocker"}),
 	}))
 
 	return mux, middleware
@@ -165,14 +165,14 @@ func (s *server) sitemap(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *server) writeSitemap(ctx context.Context, w io.Writer) {
-	programs := []stocker.Program{stocker.CFProgram, stocker.WinterProgram, stocker.SpringSummerProgram}
+	programs := []azstocker.Program{azstocker.CFProgram, azstocker.WinterProgram, azstocker.SpringSummerProgram}
 	for _, p := range programs {
-		stockingData, err := stocker.Get(s.srv, p, []string{})
+		stockingData, err := azstocker.Get(s.srv, p, []string{})
 		if err != nil {
 			slog.Log(ctx, slog.LevelError, "failed to get data", "err", err.Error())
 		}
 
-		stockingData.Sort(func(c1, c2 stocker.Calendar) int {
+		stockingData.Sort(func(c1, c2 azstocker.Calendar) int {
 			return strings.Compare(c1.WaterName, c2.WaterName)
 		})
 
@@ -195,7 +195,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	}
 
 	programStr := r.PathValue("program")
-	program, err := stocker.ParseProgram(programStr)
+	program, err := azstocker.ParseProgram(programStr)
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "invalid program", "program", programStr, "err", err.Error())
 		return
@@ -213,7 +213,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	stockingData, err := stocker.Get(s.srv, program, waters)
+	stockingData, err := azstocker.Get(s.srv, program, waters)
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to get data", "err", err.Error())
 		return
@@ -225,7 +225,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	case "last":
 		stockingData.SortLast()
 	case "":
-		stockingData.Sort(func(c1, c2 stocker.Calendar) int { return 0 })
+		stockingData.Sort(func(c1, c2 azstocker.Calendar) int { return 0 })
 	}
 
 	tmpl, err := loadTemplates()

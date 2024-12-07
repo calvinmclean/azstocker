@@ -1,4 +1,4 @@
-package stocker_test
+package azstocker_test
 
 import (
 	"net/http"
@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/calvinmclean/stocker"
-	"github.com/calvinmclean/stocker/internal/transport"
+	"github.com/calvinmclean/azstocker"
+	"github.com/calvinmclean/azstocker/internal/transport"
 
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/api/sheets/v4"
@@ -25,186 +25,186 @@ func TestGet(t *testing.T) {
 	tests := []struct {
 		name     string
 		fixture  string
-		program  stocker.Program
+		program  azstocker.Program
 		waters   []string
-		expected stocker.StockingData
+		expected azstocker.StockingData
 	}{
 		{
 			"Winter_SaltRiver",
 			winterFixture,
-			stocker.WinterProgram,
+			azstocker.WinterProgram,
 			[]string{"LOWER SALT RIVER"},
-			[]stocker.Calendar{
+			[]azstocker.Calendar{
 				{
 					WaterName: "LOWER SALT RIVER",
-					Data: []stocker.Week{
+					Data: []azstocker.Week{
 						// October
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   1,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   7,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   14,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   21,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   28,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						// November
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   4,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   11,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   18,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   25,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						// December
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   2,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   9,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   16,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   23,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   30,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						// January
 						{
 							Year:  2025,
 							Month: time.January,
 							Day:   6,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.January,
 							Day:   13,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.January,
 							Day:   20,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.January,
 							Day:   27,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						// February
 						{
 							Year:  2025,
 							Month: time.February,
 							Day:   3,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.February,
 							Day:   10,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.February,
 							Day:   17,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.February,
 							Day:   24,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						// March
 						{
 							Year:  2025,
 							Month: time.March,
 							Day:   3,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.March,
 							Day:   10,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.March,
 							Day:   17,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.March,
 							Day:   24,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2025,
 							Month: time.March,
 							Day:   31,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 					},
 				},
@@ -213,92 +213,92 @@ func TestGet(t *testing.T) {
 		{
 			"CFP_ManselCarter",
 			cfpFixture,
-			stocker.CFProgram,
+			azstocker.CFProgram,
 			[]string{"Queen Creek - Mansel Carter Oasis Lake"},
-			[]stocker.Calendar{
+			[]azstocker.Calendar{
 				{
 					WaterName: "Queen Creek - Mansel Carter Oasis Lake",
-					Data: []stocker.Week{
+					Data: []azstocker.Week{
 						// October
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   7,
-							Stock: stocker.Catfish,
+							Stock: azstocker.Catfish,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   14,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   21,
-							Stock: stocker.Catfish,
+							Stock: azstocker.Catfish,
 						},
 						{
 							Year:  2024,
 							Month: time.October,
 							Day:   28,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						// November
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   4,
-							Stock: stocker.Catfish,
+							Stock: azstocker.Catfish,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   11,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   18,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.November,
 							Day:   25,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						// December
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   2,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   9,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   16,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   23,
-							Stock: stocker.NoneFish,
+							Stock: azstocker.NoneFish,
 						},
 						{
 							Year:  2024,
 							Month: time.December,
 							Day:   30,
-							Stock: stocker.Trout,
+							Stock: azstocker.Trout,
 						},
 					},
 				},
@@ -313,7 +313,7 @@ func TestGet(t *testing.T) {
 				assert.NoError(t, r.Stop())
 			}()
 
-			stockData, err := stocker.Get(srv, tt.program, tt.waters)
+			stockData, err := azstocker.Get(srv, tt.program, tt.waters)
 			assert.NoError(t, err)
 			assert.Equal(t, tt.expected, stockData)
 		})
@@ -335,11 +335,11 @@ func TestGetHTTPCache(t *testing.T) {
 		assert.NoError(t, r.Stop())
 	}()
 
-	_, err := stocker.Get(srv, stocker.WinterProgram, []string{})
+	_, err := azstocker.Get(srv, azstocker.WinterProgram, []string{})
 	assert.NoError(t, err)
 	assert.Equal(t, 2, numRequests)
 
-	_, err = stocker.Get(srv, stocker.WinterProgram, []string{})
+	_, err = azstocker.Get(srv, azstocker.WinterProgram, []string{})
 	assert.NoError(t, err)
 	assert.Equal(t, 2, numRequests, "no new requests should be created for the 2nd request")
 }
@@ -383,7 +383,7 @@ func createTestService(t *testing.T, cassetteName string) (*sheets.Service, *rec
 	}
 
 	cacheControl := transport.NewCacheControl(time.Minute, r)
-	srv, err := stocker.NewService(apiKey, cacheControl)
+	srv, err := azstocker.NewService(apiKey, cacheControl)
 	assert.NoError(t, err)
 
 	return srv, r

@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/calvinmclean/stocker"
-	"github.com/calvinmclean/stocker/internal/server"
-	"github.com/calvinmclean/stocker/internal/transport"
+	"github.com/calvinmclean/azstocker"
+	"github.com/calvinmclean/azstocker/internal/server"
+	"github.com/calvinmclean/azstocker/internal/transport"
 
 	"github.com/urfave/cli/v2"
 )
@@ -20,7 +20,7 @@ func main() {
 	var cacheMaxAge time.Duration
 	var waters []string
 	app := &cli.App{
-		Name: "stocker",
+		Name: "azstocker",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{Name: "debug", Usage: "enable debug logs", Destination: &debug},
 			&cli.StringFlag{
@@ -70,7 +70,7 @@ func main() {
 					},
 				},
 				Action: func(c *cli.Context) error {
-					program, err := stocker.ParseProgram(programStr)
+					program, err := azstocker.ParseProgram(programStr)
 					if err != nil {
 						return err
 					}
@@ -80,12 +80,12 @@ func main() {
 						rt = transport.Log(rt)
 					}
 
-					srv, err := stocker.NewService(apiKey, rt)
+					srv, err := azstocker.NewService(apiKey, rt)
 					if err != nil {
 						return fmt.Errorf("error creating Sheets service: %w", err)
 					}
 
-					stockData, err := stocker.Get(srv, program, waters)
+					stockData, err := azstocker.Get(srv, program, waters)
 					if err != nil {
 						return fmt.Errorf("error getting stocking data: %w", err)
 					}
@@ -132,7 +132,7 @@ func main() {
 					if debug {
 						rt = transport.Log(rt)
 					}
-					srv, err := stocker.NewService(apiKey, rt)
+					srv, err := azstocker.NewService(apiKey, rt)
 					if err != nil {
 						return fmt.Errorf("error creating Sheets service: %w", err)
 					}
