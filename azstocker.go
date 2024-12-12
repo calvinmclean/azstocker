@@ -493,8 +493,10 @@ func cellAsString(cell any) string {
 }
 
 var monthMap = map[string]time.Month{
-	"january":   time.January,
-	"february":  time.February,
+	"january":  time.January,
+	"february": time.February,
+	// Typo in CFP sheet
+	"feburary":  time.February,
 	"march":     time.March,
 	"april":     time.April,
 	"may":       time.May,
@@ -509,6 +511,7 @@ var monthMap = map[string]time.Month{
 
 func parseMonth(in string) *time.Month {
 	in = strings.TrimSuffix(in, " 2024")
+	in = strings.TrimSuffix(in, " 2025")
 	result, ok := monthMap[strings.ToLower(in)]
 	if !ok {
 		return nil
