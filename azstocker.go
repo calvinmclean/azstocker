@@ -23,7 +23,7 @@ var getNow = time.Now
 
 const (
 	springSummerStockingSheetID   = "1S5wsDfGzEInV64UKjUPzexAe2KOO1KocfB4dJH7oVrs"
-	springSummerStockingSheetName = "2024 Spring/Summer"
+	springSummerStockingSheetName = "2025 Spring/Summer"
 
 	winterStockingSheetID   = "1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM"
 	winterStockingSheetName = "2024-25 Winter"
