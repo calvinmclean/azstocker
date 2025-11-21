@@ -417,6 +417,9 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 			}
 		}
 		prevDay = day
+		if monthIndex >= len(months) {
+			return Calendar{}, fmt.Errorf("index out of range: %d", monthIndex)
+		}
 
 		result.Data = append(result.Data, Week{
 			Year:  year,
@@ -466,6 +469,9 @@ func Get(srv *sheets.Service, program Program, waters []string) (StockingData, e
 }
 
 func isNewYear(months []time.Month, i int) bool {
+	if i >= len(months) {
+		return false
+	}
 	return months[i] == time.January && i > 0 && months[i-1] == time.December
 }
 
@@ -510,9 +516,12 @@ var monthMap = map[string]time.Month{
 }
 
 func parseMonth(in string) *time.Month {
-	in = strings.TrimSuffix(in, " 2024")
-	in = strings.TrimSuffix(in, " 2025")
-	result, ok := monthMap[strings.ToLower(in)]
+	parts := strings.Split(in, " ")
+	if len(parts) != 2 {
+		return nil
+	}
+
+	result, ok := monthMap[strings.ToLower(parts[0])]
 	if !ok {
 		return nil
 	}

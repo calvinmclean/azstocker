@@ -28,7 +28,7 @@ func TestParseMonth(t *testing.T) {
 		input    string
 		expected *time.Month
 	}{
-		{"OCTOBER", month(time.October)},
+		{"OCTOBER 2025", month(time.October)},
 	}
 
 	for _, tt := range tests {
