@@ -388,7 +388,7 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 	monthCells := resp.Values[0]
 	dayCells := resp.Values[1]
 
-	months := []time.Month{}
+	months := []time.Time{}
 	for _, month := range nonEmptyCells(monthCells) {
 		m := parseMonth(month)
 		if m != nil {
@@ -397,7 +397,7 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 	}
 
 	result := Calendar{}
-	year := getNow().Year()
+	year := chooseCurrentYear(months)
 	monthIndex := 0
 	prevDay := -1
 	for _, date := range nonEmptyCells(dayCells) {
@@ -421,14 +421,39 @@ func (s *sheet) initializeCalendar() (Calendar, error) {
 			return Calendar{}, fmt.Errorf("index out of range: %d", monthIndex)
 		}
 
+		useYear := months[monthIndex].Year()
+		if useYear == 0 {
+			useYear = year
+		}
 		result.Data = append(result.Data, Week{
-			Year:  year,
-			Month: months[monthIndex],
+			Year:  useYear,
+			Month: months[monthIndex].Month(),
 			Day:   day,
 		})
 	}
 
 	return result, nil
+}
+
+// chooseCurrentYear helps decide what year it is. If a parsed year exists in a month use that. Othwise, determine
+// best guess based on current month range
+func chooseCurrentYear(months []time.Time) int {
+	if len(months) > 0 && months[0].Year() != 0 {
+		return months[0].Year()
+	}
+
+	if len(months) > 2 {
+		return getNow().Year()
+	}
+
+	month1, month2 := months[0].Month(), months[len(months)-1].Month()
+
+	// if first month is > last, then it might be starting with previous year
+	if month1 > month2 {
+		return getNow().Year() - 1
+	}
+
+	return getNow().Year()
 }
 
 // NewService is a shortcut for creating a sheets.Service using an API key and a custom HTTP RoundTripper.
@@ -468,11 +493,11 @@ func Get(srv *sheets.Service, program Program, waters []string) (StockingData, e
 	return stockData, nil
 }
 
-func isNewYear(months []time.Month, i int) bool {
+func isNewYear(months []time.Time, i int) bool {
 	if i >= len(months) {
 		return false
 	}
-	return months[i] == time.January && i > 0 && months[i-1] == time.December
+	return months[i].Month() == time.January && i > 0 && months[i-1].Month() == time.December
 }
 
 func nonEmptyCells(cells []any) iter.Seq2[int, string] {
@@ -515,15 +540,26 @@ var monthMap = map[string]time.Month{
 	"december":  time.December,
 }
 
-func parseMonth(in string) *time.Month {
+// parseMonth parses a string like "OCTOBER 2025" or "OCTOBER" and returns a Time holding the month/year
+func parseMonth(in string) *time.Time {
 	parts := strings.Split(in, " ")
-	if len(parts) != 2 {
+	if len(parts) == 0 {
 		return nil
 	}
 
-	result, ok := monthMap[strings.ToLower(parts[0])]
+	month, ok := monthMap[strings.ToLower(parts[0])]
 	if !ok {
 		return nil
 	}
-	return &result
+
+	// Set day to 15 to avoid rolling over to previous month somehow
+	date := time.Date(0, month, 15, 0, 0, 0, 0, time.UTC)
+	if len(parts) == 2 {
+		year, err := strconv.Atoi(parts[1])
+		if err == nil {
+			date = date.AddDate(year, 0, 0)
+		}
+	}
+
+	return &date
 }

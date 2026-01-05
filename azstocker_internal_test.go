@@ -40,7 +40,7 @@ func TestParseMonth(t *testing.T) {
 			if tt.expected != nil && out == nil {
 				t.Errorf("expected %v but got nil", *tt.expected)
 			}
-			if *tt.expected != *out {
+			if *tt.expected != out.Month() {
 				t.Errorf("expected %v but got %v", *tt.expected, *out)
 			}
 		})
