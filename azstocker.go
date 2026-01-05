@@ -26,7 +26,7 @@ const (
 	springSummerStockingSheetName = "2025 Spring/Summer"
 
 	winterStockingSheetID   = "1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM"
-	winterStockingSheetName = "2024-25 Winter"
+	winterStockingSheetName = "2025-2026"
 
 	cfpStockingSheetID   = "1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA"
 	cfpStockingSheetName = "CFP Stocking Calendar Schedule"
