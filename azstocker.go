@@ -442,7 +442,7 @@ func chooseCurrentYear(months []time.Time) int {
 		return months[0].Year()
 	}
 
-	if len(months) > 2 {
+	if len(months) < 2 {
 		return getNow().Year()
 	}
 
