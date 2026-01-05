@@ -30,6 +30,8 @@ const (
 	templateFilename = "templates/*"
 
 	metricsAddr = "0.0.0.0:9091"
+
+	internalErrorMessage = "Internal Server Error. We are looking into the issue. Please try again later."
 )
 
 var (
@@ -68,7 +70,7 @@ func WithPushoverClient(appToken, recipientToken string) Option {
 }
 
 func RunServer(addr string, srv *sheets.Service, urlBase string, opts ...Option) error {
-	mux, err := newServer(srv, urlBase, opts...)
+	handler, err := newServer(srv, urlBase, opts...)
 	if err != nil {
 		return err
 	}
@@ -80,7 +82,7 @@ func RunServer(addr string, srv *sheets.Service, urlBase string, opts ...Option)
 			slog.Log(context.Background(), slog.LevelError, "error running metrics server", "err", metricErr.Error())
 		}
 	}()
-	return http.ListenAndServe(addr, metricMiddleware(mux))
+	return http.ListenAndServe(addr, metricMiddleware(handler))
 }
 
 func newMetricsServer() (*http.ServeMux, func(http.Handler) http.Handler) {
@@ -94,7 +96,7 @@ func newMetricsServer() (*http.ServeMux, func(http.Handler) http.Handler) {
 	return mux, middleware
 }
 
-func newServer(srv *sheets.Service, urlBase string, opts ...Option) (*http.ServeMux, error) {
+func newServer(srv *sheets.Service, urlBase string, opts ...Option) (http.Handler, error) {
 	mux := http.NewServeMux()
 
 	s := &server{srv, urlBase, nil, nil}
@@ -113,7 +115,7 @@ func newServer(srv *sheets.Service, urlBase string, opts ...Option) (*http.Serve
 	mux.HandleFunc("/manifest.json", s.pwaManifest)
 	mux.HandleFunc("/{program}", s.getProgramSchedule)
 
-	return mux, nil
+	return s.errorHandler(mux), nil
 }
 
 type server struct {
@@ -122,6 +124,50 @@ type server struct {
 
 	nc              *notifyClient
 	notifySourceIPs *sync.Map
+}
+
+func (s *server) errorHandler(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var responseBody []byte
+		recorder := &responseRecorder{ResponseWriter: w, statusCode: http.StatusOK, body: &responseBody}
+
+		next.ServeHTTP(recorder, r)
+
+		if recorder.statusCode != http.StatusInternalServerError {
+			return
+		}
+
+		if s.nc != nil {
+			originalBody := string(responseBody)
+			message := fmt.Sprintf("500 Error on %s\nOriginal response:\n%s", r.URL.Path, originalBody)
+			err := s.nc.send("AZStocker Error", message)
+			if err != nil {
+				slog.Log(r.Context(), slog.LevelError, "error sending 500 notification", "err", err)
+			}
+		}
+
+		recorder.ResponseWriter.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		_, _ = recorder.ResponseWriter.Write([]byte(internalErrorMessage))
+	})
+}
+
+type responseRecorder struct {
+	http.ResponseWriter
+	statusCode int
+	body       *[]byte
+}
+
+func (rr *responseRecorder) WriteHeader(code int) {
+	rr.statusCode = code
+	rr.ResponseWriter.WriteHeader(code)
+}
+
+func (rr *responseRecorder) Write(b []byte) (int, error) {
+	if rr.statusCode == http.StatusInternalServerError {
+		*rr.body = append(*rr.body, b...)
+		return len(b), nil
+	}
+	return rr.ResponseWriter.Write(b)
 }
 
 // manifest.json enables PWA for mobile devices
@@ -197,6 +243,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	programStr := r.PathValue("program")
 	program, err := azstocker.ParseProgram(programStr)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		slog.Log(r.Context(), slog.LevelError, "invalid program", "program", programStr, "err", err.Error())
 		return
 	}
@@ -215,6 +262,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 
 	stockingData, err := azstocker.Get(s.srv, program, waters)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		slog.Log(r.Context(), slog.LevelError, "failed to get data", "err", err.Error())
 		return
 	}
@@ -231,6 +279,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := loadTemplates()
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to parse template", "err", err.Error())
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
@@ -246,6 +295,7 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	})
 	if err != nil {
 		slog.Log(r.Context(), slog.LevelError, "failed to execute template", "err", err.Error())
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
