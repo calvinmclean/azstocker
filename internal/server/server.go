@@ -113,9 +113,9 @@ func newServer(srv *sheets.Service, urlBase string, opts ...Option) (http.Handle
 		mux.HandleFunc("/notify", s.notify)
 	}
 	mux.HandleFunc("/manifest.json", s.pwaManifest)
-	mux.HandleFunc("/{program}", s.getProgramSchedule)
+	mux.HandleFunc("/{program}", s.errorHandler(s.getProgramSchedule))
 
-	return s.errorHandler(mux), nil
+	return mux, nil
 }
 
 type server struct {
@@ -126,8 +126,8 @@ type server struct {
 	notifySourceIPs *sync.Map
 }
 
-func (s *server) errorHandler(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+func (s *server) errorHandler(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
 		var responseBody []byte
 		recorder := &responseRecorder{ResponseWriter: w, statusCode: http.StatusOK, body: &responseBody}
 
@@ -148,7 +148,7 @@ func (s *server) errorHandler(next http.Handler) http.Handler {
 
 		recorder.ResponseWriter.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		_, _ = recorder.ResponseWriter.Write([]byte(internalErrorMessage))
-	})
+	}
 }
 
 type responseRecorder struct {
@@ -243,8 +243,8 @@ func (s *server) getProgramSchedule(w http.ResponseWriter, r *http.Request) {
 	programStr := r.PathValue("program")
 	program, err := azstocker.ParseProgram(programStr)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
 		slog.Log(r.Context(), slog.LevelError, "invalid program", "program", programStr, "err", err.Error())
+		http.Error(w, "Not Found", http.StatusNotFound)
 		return
 	}
 

@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+  dev:
+    aliases: ["d"]
+    # env:
+    #   API_KEY: placeholder
+    #   PUSHOVER_RECIPIENT_TOKEN: placeholder
+    #   PUSHOVER_APP_TOKEN: placeholder
+    cmds:
+      - go run cmd/azstocker/main.go server
