@@ -22,6 +22,8 @@ path = "/metrics"
 
 [[vm]]
 size = 'shared-cpu-1x'
+persist_rootfs = "always"
 
 [env]
 URL_BASE = "https://azstocker.com"
+CACHE_DIR = "/app/cache"

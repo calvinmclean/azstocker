@@ -40,6 +40,7 @@ func main() {
 				Name:        "cache-dir",
 				Usage:       "directory for disk cache. By default, in-memory cache is used",
 				Destination: &cacheDir,
+				EnvVars:     []string{"CACHE_DIR"},
 			},
 		},
 		DefaultCommand: "server",
