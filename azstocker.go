@@ -26,7 +26,7 @@ const (
 	springSummerStockingSheetName = "%d Spring/Summer"
 
 	winterStockingSheetID   = "1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM"
-	winterStockingSheetName = "2025-2026"
+	winterStockingSheetName = "%d-%d"
 
 	cfpStockingSheetID   = "1xJYPRrX2Gb7ACr6HxPB7mlsCw9K8NvClLfBIw7qjTcA"
 	cfpStockingSheetName = "CFP Stocking Calendar Schedule"
@@ -240,9 +240,10 @@ func (s StockingData) SortLast() {
 }
 
 type sheet struct {
-	srv           *sheets.Service
-	spreadsheetID string
-	sheetName     string
+	srv             *sheets.Service
+	spreadsheetID   string
+	sheetName       string
+	backupSheetName string
 
 	// A1 notation range to get water name and schedule
 	scheduleRange string
@@ -268,21 +269,23 @@ func newSheet(srv *sheets.Service, program Program) *sheet {
 		}
 	case WinterProgram:
 		return &sheet{
-			srv:           srv,
-			spreadsheetID: winterStockingSheetID,
-			sheetName:     winterStockingSheetName,
-			scheduleRange: "A9:AD",
-			dateRange:     "B4:5",
-			skipDataCol:   5,
+			srv:             srv,
+			spreadsheetID:   winterStockingSheetID,
+			sheetName:       fmt.Sprintf(winterStockingSheetName, year, year+1),
+			backupSheetName: fmt.Sprintf(winterStockingSheetName, year-1, year),
+			scheduleRange:   "A9:AD",
+			dateRange:       "B4:5",
+			skipDataCol:     5,
 		}
 	case SpringSummerProgram:
 		return &sheet{
-			srv:           srv,
-			spreadsheetID: springSummerStockingSheetID,
-			sheetName:     fmt.Sprintf(springSummerStockingSheetName, year),
-			scheduleRange: "A9:AD",
-			dateRange:     "B4:5",
-			skipDataCol:   5,
+			srv:             srv,
+			spreadsheetID:   springSummerStockingSheetID,
+			sheetName:       fmt.Sprintf(springSummerStockingSheetName, year),
+			backupSheetName: fmt.Sprintf(springSummerStockingSheetName, year-1),
+			scheduleRange:   "A9:AD",
+			dateRange:       "B4:5",
+			skipDataCol:     5,
 		}
 	default:
 		return nil
@@ -307,10 +310,28 @@ func (s *sheet) getDataForWaters(waterNames []string) (StockingData, error) {
 	return data, nil
 }
 
+// getSheet attempts to get the sheet and uses the backup name if it fails
+// set the input to true to use the main name and fall back to default
+func (s *sheet) getSheet(firstRequest bool, targetRange string) (*sheets.ValueRange, error) {
+	sheetName := s.sheetName
+	if !firstRequest {
+		sheetName = s.backupSheetName
+	}
+	readRange := fmt.Sprintf("%s!%s", sheetName, targetRange)
+	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
+	if err != nil {
+		if firstRequest {
+			return s.getSheet(false, targetRange)
+		}
+		return nil, fmt.Errorf("error getting data from sheet: %w", err)
+	}
+
+	return resp, nil
+}
+
 // getStockingData parses a sheet to populate the provided Calendar dates with stocking data for specified waters.
 func (s *sheet) getStockingData(stockingCalendar Calendar, waterNames []string) (StockingData, error) {
-	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.scheduleRange)
-	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
+	resp, err := s.getSheet(true, s.scheduleRange)
 	if err != nil {
 		return nil, fmt.Errorf("error getting data from sheet: %w", err)
 	}
@@ -376,8 +397,7 @@ func (s *sheet) getDataFromRow(row []any, stockingCalendar Calendar) (Calendar, 
 
 // initializeCalendar parses the date rows of the Sheet to initialize the Calendar dates
 func (s *sheet) initializeCalendar() (Calendar, error) {
-	readRange := fmt.Sprintf("%s!%s", s.sheetName, s.dateRange)
-	resp, err := s.srv.Spreadsheets.Values.Get(s.spreadsheetID, readRange).Do()
+	resp, err := s.getSheet(true, s.dateRange)
 	if err != nil {
 		return Calendar{}, fmt.Errorf("error getting data from sheet: %w", err)
 	}
