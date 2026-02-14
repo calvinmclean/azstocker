@@ -23,7 +23,7 @@ var getNow = time.Now
 
 const (
 	springSummerStockingSheetID   = "1S5wsDfGzEInV64UKjUPzexAe2KOO1KocfB4dJH7oVrs"
-	springSummerStockingSheetName = "2025 Spring/Summer"
+	springSummerStockingSheetName = "%d Spring/Summer"
 
 	winterStockingSheetID   = "1PZuTV-zi5vMdxaMSnGx6c-QxeQQm-6DRQJJPKAZDjZM"
 	winterStockingSheetName = "2025-2026"
@@ -255,6 +255,7 @@ type sheet struct {
 
 // create a new Sheet depending on the required program
 func newSheet(srv *sheets.Service, program Program) *sheet {
+	year := time.Now().Year()
 	switch program {
 	case CFProgram:
 		return &sheet{
@@ -278,7 +279,7 @@ func newSheet(srv *sheets.Service, program Program) *sheet {
 		return &sheet{
 			srv:           srv,
 			spreadsheetID: springSummerStockingSheetID,
-			sheetName:     springSummerStockingSheetName,
+			sheetName:     fmt.Sprintf(springSummerStockingSheetName, year),
 			scheduleRange: "A9:AD",
 			dateRange:     "B4:5",
 			skipDataCol:   5,
