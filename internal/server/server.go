@@ -137,8 +137,8 @@ func (s *server) errorHandler(next http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
-		if s.nc != nil {
-			originalBody := string(responseBody)
+		originalBody := string(responseBody)
+		if s.nc != nil && !strings.Contains(originalBody, "write: broken pipe") {
 			message := fmt.Sprintf("500 Error on %s\nOriginal response:\n%s", r.URL.Path, originalBody)
 			err := s.nc.send("AZStocker Error", message)
 			if err != nil {
