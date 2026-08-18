@@ -156,10 +156,14 @@ func main() {
 }
 
 func setupCacheControl(maxAge time.Duration, dir string) http.RoundTripper {
+	// Retry upstream requests so transient Google API 503s don't immediately
+	// fail user requests. The cache layer below can still serve stale data if
+	// all retries fail.
+	rt := transport.NewRetry(nil, 3, 100*time.Millisecond, time.Second)
 	switch dir {
 	case "":
-		return transport.NewCacheControl(maxAge, nil)
+		return transport.NewCacheControl(maxAge, rt)
 	default:
-		return transport.NewDiskCacheControl(dir, maxAge, nil)
+		return transport.NewDiskCacheControl(dir, maxAge, rt)
 	}
 }

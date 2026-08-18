@@ -45,7 +45,10 @@ func newCacheControl(cache httpcache.Cache, maxAge time.Duration, next http.Roun
 }
 
 func (h *cacheControl) RoundTrip(r *http.Request) (*http.Response, error) {
-	r.Header.Set("Cache-Control", fmt.Sprintf("max-age=%d", int64(h.maxAge.Seconds())))
+	// stale-if-error allows the cache to return a stale response when the
+	// upstream server is unavailable. The response will still be refreshed on
+	// the next successful request.
+	r.Header.Set("Cache-Control", fmt.Sprintf("max-age=%d, stale-if-error", int64(h.maxAge.Seconds())))
 	resp, err := h.rt.RoundTrip(r)
 	if resp != nil {
 		httpCacheMetric.WithLabelValues(r.URL.Path, fmt.Sprint(cacheUsed(resp.Header))).Inc()
